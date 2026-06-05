@@ -2,7 +2,7 @@
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MirrorTalk.id – Mirror-Based English Speaking Practice Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,6 +30,7 @@
             background-color: #0b0f19;
             color: #f3f4f6;
             overflow-x: hidden;
+            width: 100%;
         }
         .neon-glow:hover {
             box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
@@ -56,18 +57,18 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased w-full overflow-x-hidden">
 
-    <div class="blob w-96 h-96 top-10 left-[-10%]"></div>
-    <div class="blob w-96 h-96 top-[60%] right-[-10%] " style="animation-delay: 2s;"></div>
+    <div class="blob w-72 h-72 md:w-96 md:h-96 top-10 left-[-10%]"></div>
+    <div class="blob w-72 h-72 md:w-96 md:h-96 top-[60%] right-[-10%] " style="animation-delay: 2s;"></div>
 
     <nav class="sticky top-0 z-50 backdrop-blur-md bg-darkBg/70 border-b border-gray-800 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="bg-gradient-to-r from-neonPurple to-neonCyan p-2.5 rounded-xl text-darkBg font-extrabold text-xl shadow-lg shadow-cyan-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <div class="bg-gradient-to-r from-neonPurple to-neonCyan p-2 rounded-xl text-darkBg font-extrabold text-lg sm:text-xl shadow-lg shadow-cyan-500/20">
                     <i class="fa-solid fa-comments"></i>
                 </div>
-                <span class="text-xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">MIRROR<span class="text-neonCyan">TALK</span></span>
+                <span class="text-lg sm:text-xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">MIRROR<span class="text-neonCyan">TALK</span></span>
             </div>
             
             <div class="hidden md:flex space-x-8 font-medium text-gray-400">
@@ -76,101 +77,102 @@
                 <a href="#features" class="hover:text-neonCyan transition-colors">Fitur Utama</a>
                 <a href="#dashboard" class="hover:text-neonCyan transition-colors">Live Demo</a>
             </div>
-<a href="https://forms.gle/eA1ntjNcpFh12Woz6" target="_blank" class="bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg font-bold px-6 py-2.5 rounded-full shadow-lg shadow-cyan-500/20 hover:opacity-90 transition-all transform hover:scale-105 inline-block text-center text-sm">
-    Gabung Sekarang
-</a>
+
+            <a href="https://forms.gle/XYZcontohForm" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full shadow-lg shadow-cyan-500/20 hover:opacity-90 transition-all transform hover:scale-105 inline-block text-center text-xs sm:text-sm">
+                Gabung Sekarang
+            </a>
         </div>
     </nav>
 
-    <section id="home" class="relative max-w-7xl mx-auto px-6 pt-20 pb-32 flex flex-col lg:flex-row items-center gap-12 z-10">
-        <div class="lg:w-1/2 space-y-6 text-center lg:text-left">
-            <div class="inline-flex items-center space-x-2 bg-gray-800/60 border border-gray-700 px-4 py-1.5 rounded-full text-xs font-semibold text-neonCyan tracking-wide uppercase">
-                <span class="flex h-2 w-2 rounded-full bg-neonCyan animate-ping"></span>
-                <span>Platform Edupreneurship Terobosan Baru 2026</span>
+    <section id="home" class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-20 md:pt-20 md:pb-32 flex flex-col lg:flex-row items-center gap-12 z-10 overflow-x-hidden">
+        <div class="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center space-x-2 bg-gray-800/60 border border-gray-700 px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold text-neonCyan tracking-wide uppercase max-w-full">
+                <span class="flex h-2 w-2 shrink-0 rounded-full bg-neonCyan animate-ping"></span>
+                <span class="truncate">Platform Edupreneurship Terobosan Baru 2026</span>
             </div>
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
                 Bicara Inggris <br>
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-neonPurple to-neonCyan">Tanpa Takut, Lebih Pede</span>
             </h1>
-            <p class="text-gray-400 text-lg max-w-xl mx-auto lg:mx-0">
+            <p class="text-gray-400 text-sm sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0">
                 MirrorTalk.id menggabungkan teknologi, edukasi, dan pendekatan psikologis lewat metode <i>mirror-learning</i>. Ruang praktik privat yang fleksibel, bebas tekanan, dan cocok untuk pemula maupun introver.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
-                <a href="#dashboard" class="bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg font-bold px-8 py-4 rounded-xl text-center shadow-xl shadow-cyan-500/10 hover:opacity-90 transition-all">
+            <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2 w-full">
+                <a href="#dashboard" class="w-full sm:w-auto bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-center shadow-xl shadow-cyan-500/10 hover:opacity-90 transition-all text-sm sm:text-base">
                     Buka Live Dashboard <i class="fa-solid fa-arrow-right ml-2"></i>
                 </a>
-                <a href="#problems" class="bg-gray-800/50 hover:bg-gray-800 border border-gray-700 text-white font-medium px-8 py-4 rounded-xl text-center transition-all">
+                <a href="#problems" class="w-full sm:w-auto bg-gray-800/50 hover:bg-gray-800 border border-gray-700 text-white font-medium px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-center transition-all text-sm sm:text-base">
                     Pelajari Metode
                 </a>
             </div>
         </div>
         
-        <div class="lg:w-1/2 flex justify-center relative w-full">
-            <div class="w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-tr from-neonPurple/40 to-neonCyan/40 rounded-3xl absolute transform rotate-12 blur-sm animate-pulse"></div>
-            <div class="w-72 h-72 sm:w-96 sm:h-96 bg-darkCard border border-gray-700 rounded-3xl p-8 backdrop-blur-xl flex flex-col justify-between shadow-2xl relative z-10 transform -rotate-3 hover:rotate-0 transition-all duration-500">
+        <div class="w-full lg:w-1/2 flex justify-center relative px-2 sm:px-0">
+            <div class="w-full max-w-[340px] sm:max-w-[400px] aspect-square bg-gradient-to-tr from-neonPurple/30 to-neonCyan/30 rounded-3xl absolute transform rotate-6 sm:rotate-12 blur-sm animate-pulse"></div>
+            <div class="w-full max-w-[340px] sm:max-w-[400px] bg-darkCard border border-gray-700 rounded-3xl p-6 sm:p-8 backdrop-blur-xl flex flex-col justify-between shadow-2xl relative z-10 transform -rotate-2 sm:-rotate-3 hover:rotate-0 transition-all duration-500 min-h-[280px]">
                 <div class="flex justify-between items-start">
-                    <i class="fa-solid fa-microphone-lines text-4xl text-neonCyan"></i>
-                    <span class="text-xs bg-cyan-500/10 text-neonCyan px-3 py-1 rounded-md border border-cyan-500/20 font-mono">CONFIDENCE APP</span>
+                    <i class="fa-solid fa-microphone-lines text-3xl sm:text-4xl text-neonCyan"></i>
+                    <span class="text-[10px] bg-cyan-500/10 text-neonCyan px-2.5 py-1 rounded-md border border-cyan-500/20 font-mono">CONFIDENCE APP</span>
                 </div>
-                <div class="space-y-4">
-                    <div class="text-2xl font-bold">Independent Speaking Kit</div>
-                    <div class="flex gap-2">
-                        <span class="bg-gray-800 text-gray-300 text-xs px-2.5 py-1 rounded-md">Self-Awareness</span>
-                        <span class="bg-gray-800 text-gray-300 text-xs px-2.5 py-1 rounded-md">Voice Record</span>
-                        <span class="bg-gray-800 text-gray-300 text-xs px-2.5 py-1 rounded-md">Feedback</span>
+                <div class="space-y-4 mt-6">
+                    <div class="text-xl sm:text-2xl font-bold">Independent Speaking Kit</div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="bg-gray-800 text-gray-300 text-[10px] sm:text-xs px-2 py-0.5 rounded-md">Self-Awareness</span>
+                        <span class="bg-gray-800 text-gray-300 text-[10px] sm:text-xs px-2 py-0.5 rounded-md">Voice Record</span>
+                        <span class="bg-gray-800 text-gray-300 text-[10px] sm:text-xs px-2 py-0.5 rounded-md">Feedback</span>
                     </div>
                     <div class="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden">
                         <div class="h-full w-2/3 bg-gradient-to-r from-neonPurple to-neonCyan rounded-full"></div>
                     </div>
-                    <div class="flex justify-between text-xs text-gray-400">
-                        <span class="sub-target">Target Kelancaran Seminggu</span>
-                        <span>75% Tercapai</span>
+                    <div class="flex justify-between text-[11px] text-gray-400">
+                        <span class="truncate mr-2">Target Kelancaran Seminggu</span>
+                        <span class="shrink-0">75% Tercapai</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="problems" class="max-w-7xl mx-auto px-6 py-20 z-10 relative bg-gray-900/30 border border-gray-800/60 rounded-3xl mb-12">
-        <div class="text-center space-y-4 mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold">Latar Belakang: <span class="text-neonPurple">Masalah & Peluang</span></h2>
-            <p class="text-gray-400 max-w-2xl mx-auto">Banyak mahasiswa paham teori gramatika bahasa Inggris, namun mendadak kaku saat harus berbicara langsung secara aktif.</p>
+    <section id="problems" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20 z-10 relative bg-gray-900/30 border border-gray-800/60 rounded-3xl mb-12">
+        <div class="text-center space-y-3 mb-10 md:mb-16">
+            <h2 class="text-2xl sm:text-4xl font-bold">Latar Belakang: <span class="text-neonPurple">Masalah & Peluang</span></h2>
+            <p class="text-gray-400 text-xs sm:text-sm max-w-2xl mx-auto">Banyak mahasiswa paham teori gramatika bahasa Inggris, namun mendadak kaku saat harus berbicara langsung secara aktif.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div class="bg-darkCard border border-red-900/30 p-8 rounded-2xl backdrop-blur-sm">
-                <h3 class="text-xl font-bold text-red-400 mb-6 flex items-center gap-3"><i class="fa-solid fa-triangle-exclamation"></i> Kendala Utama di Lapangan</h3>
-                <ul class="space-y-4 text-sm text-gray-300">
-                    <li class="flex gap-3"><i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i> Kurangnya rasa percaya diri saat memulai pembicaraan.</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i> Rasa takut yang konstan akan kesalahan pelafalan (pronunciation).</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i> Terbatasnya wadah atau partner untuk melatih speaking sehari-hari.</li>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-start">
+            <div class="bg-darkCard border border-red-900/30 p-5 sm:p-8 rounded-2xl backdrop-blur-sm">
+                <h3 class="text-lg sm:text-xl font-bold text-red-400 mb-4 sm:mb-6 flex items-center gap-3"><i class="fa-solid fa-triangle-exclamation"></i> Kendala Utama di Lapangan</h3>
+                <ul class="space-y-3.5 text-xs sm:text-sm text-gray-300">
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Kurangnya rasa percaya diri saat memulai pembicaraan.</li>
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Rasa takut yang konstan akan kesalahan pelafalan (pronunciation).</li>
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Terbatasnya wadah atau partner untuk melatih speaking sehari-hari.</li>
                 </ul>
             </div>
-            <div class="bg-darkCard border border-emerald-900/30 p-8 rounded-2xl backdrop-blur-sm">
-                <h3 class="text-xl font-bold text-emerald-400 mb-6 flex items-center gap-3"><i class="fa-solid fa-chart-line"></i> Peluang & Solusi MirrorTalk</h3>
-                <p class="text-gray-300 text-sm leading-relaxed mb-4">Kebutuhan komunikasi bahasa Inggris meningkat pesat di era globalisasi saat ini. MirrorTalk.id hadir menawarkan alternatif segar berbasis digital lewat cermin virtual yang melatih kemandirian.</p>
+            <div class="bg-darkCard border border-emerald-900/30 p-5 sm:p-8 rounded-2xl backdrop-blur-sm">
+                <h3 class="text-lg sm:text-xl font-bold text-emerald-400 mb-4 sm:mb-6 flex items-center gap-3"><i class="fa-solid fa-chart-line"></i> Peluang & Solusi MirrorTalk</h3>
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Kebutuhan komunikasi bahasa Inggris meningkat pesat di era globalisasi saat ini. MirrorTalk.id hadir menawarkan alternatif segar berbasis digital lewat cermin virtual yang melatih kemandirian.</p>
             </div>
         </div>
     </section>
 
-    <section id="dashboard" class="max-w-7xl mx-auto px-6 py-20 z-10 relative">
-        <div class="text-center space-y-4 mb-12">
-            <h2 class="text-3xl font-bold">Interaktif <span class="text-neonCyan">Live Dashboard</span></h2>
-            <p class="text-gray-400 max-w-xl mx-auto">Simulasikan alur sistem monitoring dan tantangan mingguan platform kami langsung di bawah ini.</p>
+    <section id="dashboard" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20 z-10 relative">
+        <div class="text-center space-y-3 mb-10">
+            <h2 class="text-2xl sm:text-3xl font-bold">Interaktif <span class="text-neonCyan">Live Dashboard</span></h2>
+            <p class="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto">Simulasikan alur sistem monitoring dan tantangan mingguan platform kami langsung di bawah ini.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-            <div class="bg-darkCard border border-gray-800 p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
+            <div class="bg-darkCard border border-gray-800 p-5 sm:p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
                 <div>
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-xs uppercase font-mono tracking-wider text-gray-400">Voice Recording System</span>
+                    <div class="flex justify-between items-center mb-4 sm:mb-6">
+                        <span class="text-[10px] uppercase font-mono tracking-wider text-gray-400">Voice Recording System</span>
                         <span id="recordStatusDot" class="w-2 h-2 rounded-full bg-red-500"></span>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Evaluasi Mandiri</h3>
-                    <p class="text-gray-400 text-xs mb-6">Klik tombol mikrofon di bawah untuk merekam suara asli Anda melalui browser secara langsung.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-1.5">Evaluasi Mandiri</h3>
+                    <p class="text-gray-400 text-xs mb-5">Klik tombol mikrofon di bawah untuk merekam suara asli Anda melalui browser secara langsung.</p>
                     
-                    <div class="bg-darkBg p-4 rounded-xl border border-gray-800 flex justify-between items-center">
-                        <span class="text-sm font-medium">Status Mikrofon:</span>
-                        <button id="recordBtn" onclick="toggleRecord()" class="px-4 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-xs font-bold font-mono transition-all">
+                    <div class="bg-darkBg p-3.5 rounded-xl border border-gray-800 flex justify-between items-center gap-2">
+                        <span class="text-xs sm:text-sm font-medium truncate">Status Mikrofon:</span>
+                        <button id="recordBtn" onclick="toggleRecord()" class="px-3 py-2 shrink-0 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-[11px] font-bold font-mono transition-all">
                             MIC OFF
                         </button>
                     </div>
@@ -178,17 +180,17 @@
                 <div id="recordingArea" class="w-full"></div>
             </div>
 
-            <div class="bg-darkCard border border-gray-800 p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
+            <div class="bg-darkCard border border-gray-800 p-5 sm:p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
                 <div>
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-xs uppercase font-mono tracking-wider text-gray-400">Speaking Challenges</span>
+                    <div class="flex justify-between items-center mb-4 sm:mb-6">
+                        <span class="text-[10px] uppercase font-mono tracking-wider text-gray-400">Speaking Challenges</span>
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Tingkat Kesulitan & Materi</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-1.5">Tingkat Kesulitan & Materi</h3>
                     <p class="text-gray-400 text-xs mb-4">Sesuaikan slider untuk mengganti topik materi tantangan berbicara harian Anda.</p>
                     
                     <div class="space-y-4 bg-darkBg p-4 rounded-xl border border-gray-800">
-                        <div class="flex justify-between text-sm font-mono">
+                        <div class="flex justify-between text-xs sm:text-sm font-mono">
                             <span>Level:</span>
                             <span id="levelVal" class="text-neonCyan font-bold">Medium</span>
                         </div>
@@ -202,51 +204,51 @@
                 </div>
             </div>
 
-            <div class="bg-darkCard border border-gray-800 p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
+            <div class="bg-darkCard border border-gray-800 p-5 sm:p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
                 <div>
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-xs uppercase font-mono tracking-wider text-gray-400">Confidence Feedback</span>
+                    <div class="flex justify-between items-center mb-4 sm:mb-6">
+                        <span class="text-[10px] uppercase font-mono tracking-wider text-gray-400">Confidence Feedback</span>
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Statistik Kepercayaan Diri</h3>
-                    <p class="text-gray-400 text-xs mb-6">Data real-time evaluasi performa dari modul latihan mandiri terakhir Anda.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-1.5">Statistik Kepercayaan Diri</h3>
+                    <p class="text-gray-400 text-xs mb-5">Data real-time evaluasi performa dari modul latihan mandiri terakhir Anda.</p>
                     
                     <div class="grid grid-cols-2 gap-3">
-                        <div class="bg-darkBg p-4 rounded-xl border border-gray-800 text-center">
-                            <span class="text-gray-500 text-xs block mb-1">Skor Pronunciation</span>
-                            <span id="pronoScore" class="text-2xl font-extrabold text-orange-400 font-mono">82%</span>
+                        <div class="bg-darkBg p-3 sm:p-4 rounded-xl border border-gray-800 text-center">
+                            <span class="text-gray-500 text-[10px] sm:text-xs block mb-1">Skor Pronunciation</span>
+                            <span id="pronoScore" class="text-xl sm:text-2xl font-extrabold text-orange-400 font-mono">82%</span>
                         </div>
-                        <div class="bg-darkBg p-4 rounded-xl border border-gray-800 text-center">
-                            <span class="text-gray-500 text-xs block mb-1">Fluency Rate</span>
-                            <span id="fluencyScore" class="text-2xl font-extrabold text-blue-400 font-mono">78%</span>
+                        <div class="bg-darkBg p-3 sm:p-4 rounded-xl border border-gray-800 text-center">
+                            <span class="text-gray-500 text-[10px] sm:text-xs block mb-1">Fluency Rate</span>
+                            <span id="fluencyScore" class="text-xl sm:text-2xl font-extrabold text-blue-400 font-mono">78%</span>
                         </div>
                     </div>
                 </div>
-                <button onclick="randomizeStats()" class="mt-6 w-full py-2.5 bg-gray-800 border border-gray-700 rounded-xl text-xs font-semibold hover:bg-gray-700 transition-colors">
+                <button onclick="randomizeStats()" class="mt-5 w-full py-2.5 bg-gray-800 border border-gray-700 rounded-xl text-xs font-semibold hover:bg-gray-700 transition-colors">
                     <i class="fa-solid fa-arrows-rotate mr-1"></i> Hitung Ulang Skor Baru
                 </button>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
-            <div class="bg-darkCard border border-gray-800 p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between lg:col-span-1">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mt-6 md:mt-8">
+            <div class="bg-darkCard border border-gray-800 p-5 sm:p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between lg:col-span-1">
                 <div>
                     <div class="flex justify-between items-center mb-4">
-                        <span class="text-xs uppercase font-mono tracking-wider text-gray-400">Admin & Platform Review</span>
+                        <span class="text-[10px] uppercase font-mono tracking-wider text-gray-400">Admin & Platform Review</span>
                         <i class="fa-solid fa-star text-neonCyan"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Berikan Penilaian</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-1.5">Berikan Penilaian</h3>
                     <p class="text-gray-400 text-xs mb-4">Puas dengan respon admin atau kualitas platform? Kirimkan ulasan Anda!</p>
                     
                     <form id="reviewForm" onsubmit="handleReviewSubmit(event)" class="space-y-4">
                         <div>
-                            <label class="block text-gray-400 text-[11px] font-mono mb-1 uppercase">Nama Pengguna</label>
+                            <label class="block text-gray-400 text-[10px] font-mono mb-1 uppercase">Nama Pengguna</label>
                             <input type="text" id="reviewerName" placeholder="Contoh: Andi Wijaya" class="w-full bg-darkBg border border-gray-700 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-neonCyan text-white" required>
                         </div>
                         
                         <div>
-                            <label class="block text-gray-400 text-[11px] font-mono mb-1 uppercase">Rating Layanan</label>
-                            <div class="flex items-center space-x-2 text-xl py-1">
+                            <label class="block text-gray-400 text-[10px] font-mono mb-1 uppercase">Rating Layanan</label>
+                            <div class="flex items-center space-x-2 text-lg py-1">
                                 <input type="hidden" id="ratingValue" value="0">
                                 <i class="fa-solid fa-star text-gray-700 cursor-pointer star-btn" onclick="setRating(1)"></i>
                                 <i class="fa-solid fa-star text-gray-700 cursor-pointer star-btn" onclick="setRating(2)"></i>
@@ -258,7 +260,7 @@
                         </div>
 
                         <div>
-                            <label class="block text-gray-400 text-[11px] font-mono mb-1 uppercase">Ulasan / Masukan</label>
+                            <label class="block text-gray-400 text-[10px] font-mono mb-1 uppercase">Ulasan / Masukan</label>
                             <textarea id="reviewerText" rows="3" placeholder="Admin sangat cepat merespon dan ramah..." class="w-full bg-darkBg border border-gray-700 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-neonCyan text-white resize-none" required></textarea>
                         </div>
 
@@ -269,26 +271,26 @@
                 </div>
             </div>
 
-            <div class="bg-darkCard border border-gray-800 p-6 rounded-2xl backdrop-blur-sm lg:col-span-2 flex flex-col">
-                <div class="flex justify-between items-center mb-6">
+            <div class="bg-darkCard border border-gray-800 p-5 sm:p-6 rounded-2xl backdrop-blur-sm lg:col-span-2 flex flex-col">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
                     <div>
-                        <h3 class="text-xl font-bold">Ulasan Pengguna</h3>
+                        <h3 class="text-lg sm:text-xl font-bold">Ulasan Pengguna</h3>
                         <p class="text-gray-400 text-xs">Apa kata mereka mengenai layanan Admin & Fitur MirrorTalk.id</p>
                     </div>
-                    <div class="bg-gray-800/60 border border-gray-700 px-3 py-2 rounded-xl text-center min-w-[70px]">
-                        <span class="text-xs text-gray-400 block font-mono">Rata-rata</span>
-                        <span id="avgRatingScore" class="text-lg font-bold text-neonCyan font-mono">4.5</span>
+                    <div class="bg-gray-800/60 border border-gray-700 px-3 py-1.5 rounded-xl text-center self-start sm:self-auto min-w-[70px]">
+                        <span class="text-[10px] text-gray-400 block font-mono">Rata-rata</span>
+                        <span id="avgRatingScore" class="text-base sm:text-lg font-bold text-neonCyan font-mono">4.5</span>
                     </div>
                 </div>
 
-                <div id="reviewsList" class="review-container space-y-4 max-h-[310px] overflow-y-auto pr-2">
+                <div id="reviewsList" class="review-container space-y-4 max-h-[310px] overflow-y-auto pr-1">
                     <div class="bg-darkBg/60 border border-gray-800 p-4 rounded-xl space-y-2">
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 bg-neonPurple/20 text-neonPurple rounded-full flex items-center justify-center text-xs font-bold font-mono">R</div>
-                                <span class="text-xs font-bold text-white">Rina Atika</span>
+                        <div class="flex justify-between items-center gap-2">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <div class="w-7 h-7 shrink-0 bg-neonPurple/20 text-neonPurple rounded-full flex items-center justify-center text-xs font-bold font-mono">R</div>
+                                <span class="text-xs font-bold text-white truncate">Rina Atika</span>
                             </div>
-                            <div class="text-amber-400 text-xs font-mono">
+                            <div class="text-amber-400 text-[11px] font-mono shrink-0">
                                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 5/5
                             </div>
                         </div>
@@ -296,12 +298,12 @@
                     </div>
 
                     <div class="bg-darkBg/60 border border-gray-800 p-4 rounded-xl space-y-2">
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 bg-neonCyan/20 text-neonCyan rounded-full flex items-center justify-center text-xs font-bold font-mono">M</div>
-                                <span class="text-xs font-bold text-white">Muhammad Fajar</span>
+                        <div class="flex justify-between items-center gap-2">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <div class="w-7 h-7 shrink-0 bg-neonCyan/20 text-neonCyan rounded-full flex items-center justify-center text-xs font-bold font-mono">M</div>
+                                <span class="text-xs font-bold text-white truncate">Muhammad Fajar</span>
                             </div>
-                            <div class="text-amber-400 text-xs font-mono">
+                            <div class="text-amber-400 text-[11px] font-mono shrink-0">
                                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star text-gray-700"></i> 4/5
                             </div>
                         </div>
@@ -312,18 +314,18 @@
         </div>
     </section>
 
-    <div class="fixed bottom-6 right-6 z-50">
-        <button onclick="openWhatsApp()" class="flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-2xl transition-all transform hover:scale-110 group relative">
-            <i class="fa-brands fa-whatsapp text-3xl"></i>
+    <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-3">
+        <button onclick="openWhatsApp()" class="flex items-center justify-center w-12 h-12 sm:w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-2xl transition-all transform hover:scale-110">
+            <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
         </button>
     </div>
 
-    <div class="fixed bottom-6 left-6 z-50">
-        <button onclick="toggleAIChat()" class="flex items-center justify-center w-14 h-14 bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg rounded-full shadow-xl transition-all transform hover:scale-110">
-            <i class="fa-solid fa-robot text-2xl animate-pulse"></i>
+    <div class="fixed bottom-4 left-4 z-50">
+        <button onclick="toggleAIChat()" class="flex items-center justify-center w-12 h-12 sm:w-14 h-14 bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg rounded-full shadow-xl transition-all transform hover:scale-110">
+            <i class="fa-solid fa-robot text-xl sm:text-2xl animate-pulse"></i>
         </button>
 
-        <div id="aiChatWindow" class="hidden absolute bottom-20 left-0 w-80 sm:w-96 bg-[#0e1626]/95 border border-gray-800 rounded-2xl shadow-2xl flex flex-col backdrop-blur-xl overflow-hidden">
+        <div id="aiChatWindow" class="hidden absolute bottom-16 left-0 w-[calc(100vw-32px)] sm:w-96 max-w-[360px] sm:max-w-none bg-[#0e1626]/95 border border-gray-800 rounded-2xl shadow-2xl flex flex-col backdrop-blur-xl overflow-hidden">
             <div class="p-4 bg-gradient-to-r from-gray-900 to-darkBg border-b border-gray-800 flex justify-between items-center">
                 <div class="flex items-center gap-2.5">
                     <div class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping"></div>
@@ -335,7 +337,7 @@
                 <button onclick="toggleAIChat()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
 
-            <div id="chatMessages" class="chat-container p-4 h-64 overflow-y-auto space-y-3 text-xs flex flex-col">
+            <div id="chatMessages" class="chat-container p-4 h-56 sm:h-64 overflow-y-auto space-y-3 text-xs flex flex-col">
                 <div class="bg-gray-800/50 p-3 rounded-xl max-w-[85%] border border-gray-800 text-gray-300 self-start">
                     Hello Learner! 👋 Ada yang bisa saya bantu terkait detail produk MirrorTalk.id?
                 </div>
@@ -375,7 +377,7 @@
                     if(oldPlay) oldPlay.remove();
 
                     audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                    mediaRecorder = new NewMediaRecorder(audioStream); // Fallback handling browser modern
+                    mediaRecorder = new NewMediaRecorder(audioStream);
                     function NewMediaRecorder(s){ return new MediaRecorder(s); }
                     
                     audioChunks = [];
@@ -397,7 +399,7 @@
 
                     mediaRecorder.start();
                     btn.textContent = 'REC ACTIVE';
-                    btn.className = 'px-4 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-xs font-bold font-mono animate-pulse';
+                    btn.className = 'px-3 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-[11px] font-bold font-mono animate-pulse';
                     dot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
                 } catch (err) {
                     alert('Akses mikrofon ditolak atau perangkat tidak mendukung.');
@@ -409,7 +411,7 @@
                     audioStream.getTracks().forEach(t => t.stop());
                 }
                 btn.textContent = 'MIC OFF';
-                btn.className = 'px-4 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-xs font-bold font-mono';
+                btn.className = 'px-3 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-[11px] font-bold font-mono';
                 dot.className = 'w-2 h-2 rounded-full bg-red-500';
             }
         }
@@ -468,12 +470,12 @@
             for(let i=1; i<=5; i++) stars += i <= currentRating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star text-gray-700"></i>';
 
             card.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-2">
-                        <div class="w-7 h-7 bg-neonCyan/20 text-neonCyan rounded-full flex items-center justify-center text-xs font-bold font-mono">${nameInput.value.charAt(0).toUpperCase()}</div>
-                        <span class="text-xs font-bold text-white">${nameInput.value}</span>
+                <div class="flex justify-between items-center gap-2">
+                    <div class="flex items-center gap-2 min-w-0">
+                        <div class="w-7 h-7 shrink-0 bg-neonCyan/20 text-neonCyan rounded-full flex items-center justify-center text-xs font-bold font-mono">${nameInput.value.charAt(0).toUpperCase()}</div>
+                        <span class="text-xs font-bold text-white truncate">${nameInput.value}</span>
                     </div>
-                    <div class="text-amber-400 text-xs font-mono">${stars} ${currentRating}/5</div>
+                    <div class="text-amber-400 text-[11px] font-mono shrink-0">${stars} ${currentRating}/5</div>
                 </div>
                 <p class="text-gray-400 text-xs leading-relaxed italic">"${textInput.value}"</p>
             `;
@@ -494,7 +496,6 @@
             uMsg.textContent = txt; container.appendChild(uMsg);
             input.value = ''; container.scrollTop = container.scrollHeight;
 
-            // Logika Balasan Cerdas Berdasarkan Keyword Kata Kunci
             let res = "Maaf, saya tidak mengerti konteks tersebut. Saya diprogram menjawab seputar layanan MirrorTalk.id.";
             const q = txt.toLowerCase();
             if(q.includes('topik') || q.includes('fitur')) res = "MirrorTalk menyediakan 3 fitur utama di dashboard: \n1. Evaluasi suara mandiri\n2. Tantangan level berbicara (Beginner-Advanced)\n3. Statistik akurasi pronunciation.";
