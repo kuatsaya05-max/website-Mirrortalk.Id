@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MirrorTalk.id – Mirror-Based English Speaking Practice Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -21,6 +21,23 @@
                         doraYellow: '#ffca28',
                         doraDark: '#1e3a5f',
                         darkCard: 'rgba(255, 255, 255, 0.95)',
+                    },
+                    animation: {
+                        'soft-bounce': 'softBounce 3s infinite',
+                        'gentle-shake': 'gentleShake 4s infinite',
+                    },
+                    keyframes: {
+                        softBounce: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        },
+                        gentleShake: {
+                            '0%, 90%, 100%': { transform: 'rotate(0deg)' },
+                            '92%': { transform: 'rotate(-10deg)' },
+                            '94%': { transform: 'rotate(10deg)' },
+                            '96%': { transform: 'rotate(-8deg)' },
+                            '98%': { transform: 'rotate(8deg)' },
+                        }
                     }
                 }
             }
@@ -89,7 +106,7 @@
                 <button onclick="openModal('registerModal')" class="w-full sm:w-auto bg-doraBlue hover:bg-sky-600 text-white font-bold px-6 sm:px-8 py-3.5 rounded-2xl text-center shadow-lg border-2 border-doraDark text-sm sm:text-base">
                     [Get Started]
                 </button>
-                <a href="https://wa.me/invite/Lrd6KETO2u31asYWkROM4F" target="_blank" rel="noopener" class="w-full sm:w-auto bg-white hover:bg-gray-50 border-2 border-doraDark text-doraDark font-bold px-6 sm:px-8 py-3.5 rounded-2xl text-center shadow-md transition-all text-sm sm:text-base">
+                <a href="https://wa.me/6287763398012?text=Halo%20Admin%20MirrorTalk.id%2C%20saya%20tertarik%20untuk%20mencoba%20Free%20Trial%20platform%20ini." target="_blank" rel="noopener" class="w-full sm:w-auto bg-white hover:bg-gray-50 border-2 border-doraDark text-doraDark font-bold px-6 sm:px-8 py-3.5 rounded-2xl text-center shadow-md transition-all text-sm sm:text-base">
                     [Free Trial]
                 </a>
             </div>
@@ -590,12 +607,20 @@
         </div>
     </div>
 
-    <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
-        <a href="whatsapp://chat?code=Lrd6KETO2u31asYWkROM4F" class="flex items-center justify-center w-12 h-12 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-lg transform hover:scale-110 transition-all">
-            <i class="fa-brands fa-whatsapp text-2xl"></i>
-        </a>
-        <button onclick="toggleAIChat()" class="flex items-center justify-center w-12 h-12 bg-doraYellow border-2 border-doraDark text-doraDark rounded-full shadow-lg transform hover:scale-110 transition-all">
-            <i class="fa-solid fa-robot text-xl"></i>
+    <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-3">
+        <div class="relative group animate-soft-bounce">
+            <span class="absolute inset-0 rounded-full bg-[#25D366] opacity-40 animate-ping"></span>
+            
+            <a href="https://wa.me/6287763398012?text=Halo%20Admin%20MirrorTalk.id%2C%20saya%20butuh%20bantuan%20informasi%20mengenai%20platform%20ini." 
+               target="_blank" rel="noopener" 
+               class="relative flex items-center justify-center w-12 h-12 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-lg transform hover:scale-110 transition-all duration-300">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+            </a>
+        </div>
+
+        <button onclick="toggleAIChat()" 
+                class="animate-gentle-shake flex items-center justify-center w-12 h-12 bg-doraYellow border-2 border-doraDark text-doraDark rounded-full shadow-lg transform hover:scale-110 hover:bg-amber-400 transition-all duration-300">
+            <i class="fa-solid fa-robot text-xl animate-pulse"></i>
         </button>
     </div>
 
@@ -663,10 +688,10 @@
             openModal('packageModal');
         }
 
-        // UPDATE: Pembelian paket dialihkan langsung menggunakan protokol deep-link whatsapp
         function redirectToPackageWA() {
             closeModal('packageModal');
-            window.open('whatsapp://chat?code=Lrd6KETO2u31asYWkROM4F', '_self');
+            const targetMessage = encodeURIComponent(`Halo Admin MirrorTalk.id, saya ingin membeli paket *${currentSelectedPackage}* yang seharga ${document.getElementById('pckPrice').textContent}. Mohon informasi langkah pendaftaran selanjutnya.`);
+            window.open(`https://wa.me/6287763398012?text=${targetMessage}`, '_blank');
         }
 
         // TOPIC-BASED SPEAKING PRACTICE CONTROLLER
