@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -16,10 +16,11 @@
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
                     },
                     colors: {
-                        darkBg: '#0b0f19',
-                        darkCard: 'rgba(20, 27, 45, 0.7)',
-                        neonCyan: '#00f2fe',
-                        neonPurple: '#4facfe',
+                        doraBlue: '#51a8dd',
+                        doraLight: '#e1f1fa',
+                        doraYellow: '#ffca28',
+                        doraDark: '#1e3a5f',
+                        darkCard: 'rgba(255, 255, 255, 0.95)',
                     }
                 }
             }
@@ -27,487 +28,766 @@
     </script>
     <style>
         body {
-            background-color: #0b0f19;
-            color: #f3f4f6;
+            background-color: #e1f1fa;
+            color: #1e3a5f;
             overflow-x: hidden;
             width: 100%;
         }
-        .neon-glow:hover {
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
-            border-color: #00f2fe;
-        }
-        .blob {
-            position: absolute;
-            background: linear-gradient(180deg, rgba(79, 172, 254, 0.15) 0%, rgba(0, 242, 254, 0.15) 100%);
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: 0;
-            animation: float 10s infinite alternate;
-        }
-        @keyframes float {
-            0% { transform: translate(0px, 0px) scale(1); }
-            100% { transform: translate(30px, 50px) scale(1.2); }
+        .dora-shadow {
+            box-shadow: 0 10px 25px rgba(81, 168, 221, 0.2);
         }
         .chat-container::-webkit-scrollbar, .review-container::-webkit-scrollbar {
             width: 4px;
         }
         .chat-container::-webkit-scrollbar-thumb, .review-container::-webkit-scrollbar-thumb {
-            background: #1f2937;
+            background: #51a8dd;
             border-radius: 10px;
         }
     </style>
 </head>
 <body class="font-sans antialiased w-full overflow-x-hidden">
 
-    <div class="blob w-72 h-72 md:w-96 md:h-96 top-10 left-[-10%]"></div>
-    <div class="blob w-72 h-72 md:w-96 md:h-96 top-[60%] right-[-10%] " style="animation-delay: 2s;"></div>
-
-    <nav class="sticky top-0 z-50 backdrop-blur-md bg-darkBg/70 border-b border-gray-800 transition-all duration-300">
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b-4 border-doraBlue transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2 sm:space-x-3">
-                <div class="bg-gradient-to-r from-neonPurple to-neonCyan p-2 rounded-xl text-darkBg font-extrabold text-lg sm:text-xl shadow-lg shadow-cyan-500/20">
-                    <i class="fa-solid fa-comments"></i>
+                <div class="bg-doraBlue p-2 rounded-full text-white font-extrabold text-lg sm:text-xl shadow-md">
+                    <i class="fa-solid fa-face-smile"></i>
                 </div>
-                <span class="text-lg sm:text-xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">MIRROR<span class="text-neonCyan">TALK</span></span>
+                <span class="text-lg sm:text-xl font-extrabold tracking-wider text-doraDark">MIRROR<span class="text-doraBlue">TALK</span></span>
             </div>
             
-            <div class="hidden md:flex space-x-8 font-medium text-gray-400">
-                <a href="#home" class="hover:text-neonCyan transition-colors">Home</a>
-                <a href="#problems" class="hover:text-neonCyan transition-colors">Masalah & Peluang</a>
-                <a href="#features" class="hover:text-neonCyan transition-colors">Fitur Utama</a>
-                <a href="#dashboard" class="hover:text-neonCyan transition-colors">Live Demo</a>
+            <div class="hidden md:flex space-x-6 font-bold text-doraDark/80 text-sm">
+                <a href="#home" class="hover:text-doraBlue transition-colors">Home</a>
+                <a href="#about" class="hover:text-doraBlue transition-colors">About Us</a>
+                <a href="#problems" class="hover:text-doraBlue transition-colors">Challenges</a>
+                <a href="#features" class="hover:text-doraBlue transition-colors">Features</a>
+                <a href="#program" class="hover:text-doraBlue transition-colors">Program</a>
+                <a href="#pricing" class="hover:text-doraBlue transition-colors">Pricing</a>
+                <a href="#testimonials" class="hover:text-doraBlue transition-colors">Testimonials</a>
             </div>
 
-            <a href="https://forms.gle/XYZcontohForm" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full shadow-lg shadow-cyan-500/20 hover:opacity-90 transition-all transform hover:scale-105 inline-block text-center text-xs sm:text-sm">
-                Gabung Sekarang
-            </a>
+            <button onclick="openModal('registerModal')" class="bg-doraYellow hover:bg-amber-400 text-doraDark font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full shadow-md transition-all transform hover:scale-105 text-xs sm:text-sm border-2 border-doraDark">
+                Get Started
+            </button>
         </div>
     </nav>
 
-    <section id="home" class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-20 md:pt-20 md:pb-32 flex flex-col lg:flex-row items-center gap-12 z-10 overflow-x-hidden">
+    <section id="home" class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 md:pt-20 md:pb-24 flex flex-col lg:flex-row items-center gap-12 z-10 overflow-x-hidden">
         <div class="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
-            <div class="inline-flex items-center space-x-2 bg-gray-800/60 border border-gray-700 px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold text-neonCyan tracking-wide uppercase max-w-full">
-                <span class="flex h-2 w-2 shrink-0 rounded-full bg-neonCyan animate-ping"></span>
-                <span class="truncate">Platform Edupreneurship Terobosan Baru 2026</span>
+            <div class="inline-flex items-center space-x-2 bg-white border-2 border-doraBlue px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold text-doraBlue tracking-wide uppercase max-w-full shadow-sm">
+                <span class="flex h-2 w-2 shrink-0 rounded-full bg-doraYellow animate-pulse"></span>
+                <span class="truncate text-doraDark">✨ Welcome to MirrorTalk.id</span>
             </div>
-            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-                Bicara Inggris <br>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-neonPurple to-neonCyan">Tanpa Takut, Lebih Pede</span>
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-doraDark">
+                Practice English. <br>Build Confidence. <br>
+                <span class="text-doraBlue">Speak Without Fear.</span>
             </h1>
-            <p class="text-gray-400 text-sm sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0">
-                MirrorTalk.id menggabungkan teknologi, edukasi, dan pendekatan psikologis lewat metode <i>mirror-learning</i>. Ruang praktik privat yang fleksibel, bebas tekanan, dan cocok untuk pemula maupun introver.
+            <p class="text-doraDark/80 text-sm sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0 font-medium">
+                Improve your English speaking skills through our unique mirror-based learning method. Practice independently, gain confidence, and communicate more effectively anytime and anywhere.
             </p>
             <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2 w-full">
-                <a href="#dashboard" class="w-full sm:w-auto bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-center shadow-xl shadow-cyan-500/10 hover:opacity-90 transition-all text-sm sm:text-base">
-                    Buka Live Dashboard <i class="fa-solid fa-arrow-right ml-2"></i>
-                </a>
-                <a href="#problems" class="w-full sm:w-auto bg-gray-800/50 hover:bg-gray-800 border border-gray-700 text-white font-medium px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-center transition-all text-sm sm:text-base">
-                    Pelajari Metode
+                <button onclick="openModal('registerModal')" class="w-full sm:w-auto bg-doraBlue hover:bg-sky-600 text-white font-bold px-6 sm:px-8 py-3.5 rounded-2xl text-center shadow-lg border-2 border-doraDark text-sm sm:text-base">
+                    [Get Started]
+                </button>
+                <a href="https://wa.me/6281999321260?text=Hello%20MirrorTalk%20Team%2C%20I%20would%20like%20to%20join%20the%20Free%20Trial%20Program." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-white hover:bg-gray-50 border-2 border-doraDark text-doraDark font-bold px-6 sm:px-8 py-3.5 rounded-2xl text-center shadow-md transition-all text-sm sm:text-base">
+                    [Free Trial]
                 </a>
             </div>
         </div>
         
         <div class="w-full lg:w-1/2 flex justify-center relative px-2 sm:px-0">
-            <div class="w-full max-w-[340px] sm:max-w-[400px] aspect-square bg-gradient-to-tr from-neonPurple/30 to-neonCyan/30 rounded-3xl absolute transform rotate-6 sm:rotate-12 blur-sm animate-pulse"></div>
-            <div class="w-full max-w-[340px] sm:max-w-[400px] bg-darkCard border border-gray-700 rounded-3xl p-6 sm:p-8 backdrop-blur-xl flex flex-col justify-between shadow-2xl relative z-10 transform -rotate-2 sm:-rotate-3 hover:rotate-0 transition-all duration-500 min-h-[280px]">
-                <div class="flex justify-between items-start">
-                    <i class="fa-solid fa-microphone-lines text-3xl sm:text-4xl text-neonCyan"></i>
-                    <span class="text-[10px] bg-cyan-500/10 text-neonCyan px-2.5 py-1 rounded-md border border-cyan-500/20 font-mono">CONFIDENCE APP</span>
+            <div class="w-full max-w-[360px] sm:max-w-[420px] bg-white border-4 border-doraBlue rounded-3xl p-6 shadow-xl relative z-10">
+                <div class="flex justify-between items-center border-b-2 border-doraLight pb-3">
+                    <span class="text-xs bg-doraYellow text-doraDark px-2.5 py-1 rounded-full font-bold border border-doraDark">✨ My Progress Tracker</span>
+                    <i class="fa-solid fa-star text-doraYellow animate-bounce"></i>
                 </div>
-                <div class="space-y-4 mt-6">
-                    <div class="text-xl sm:text-2xl font-bold">Independent Speaking Kit</div>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="bg-gray-800 text-gray-300 text-[10px] sm:text-xs px-2 py-0.5 rounded-md">Self-Awareness</span>
-                        <span class="bg-gray-800 text-gray-300 text-[10px] sm:text-xs px-2 py-0.5 rounded-md">Voice Record</span>
-                        <span class="bg-gray-800 text-gray-300 text-[10px] sm:text-xs px-2 py-0.5 rounded-md">Feedback</span>
+                <div class="space-y-4 mt-4">
+                    <div class="grid grid-cols-2 gap-3 text-xs font-bold text-doraDark">
+                        <div class="bg-doraLight/50 p-2.5 rounded-xl border border-doraBlue/30">
+                            <span class="text-gray-500 block text-[10px]">Speaking Sessions</span>
+                            <span class="text-base text-doraBlue font-mono">12 Sessions</span>
+                        </div>
+                        <div class="bg-doraLight/50 p-2.5 rounded-xl border border-doraBlue/30">
+                            <span class="text-base text-emerald-600 font-mono">8 Topics</span>
+                        </div>
                     </div>
-                    <div class="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden">
-                        <div class="h-full w-2/3 bg-gradient-to-r from-neonPurple to-neonCyan rounded-full"></div>
-                    </div>
-                    <div class="flex justify-between text-[11px] text-gray-400">
-                        <span class="truncate mr-2">Target Kelancaran Seminggu</span>
-                        <span class="shrink-0">75% Tercapai</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="problems" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20 z-10 relative bg-gray-900/30 border border-gray-800/60 rounded-3xl mb-12">
-        <div class="text-center space-y-3 mb-10 md:mb-16">
-            <h2 class="text-2xl sm:text-4xl font-bold">Latar Belakang: <span class="text-neonPurple">Masalah & Peluang</span></h2>
-            <p class="text-gray-400 text-xs sm:text-sm max-w-2xl mx-auto">Banyak mahasiswa paham teori gramatika bahasa Inggris, namun mendadak kaku saat harus berbicara langsung secara aktif.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-start">
-            <div class="bg-darkCard border border-red-900/30 p-5 sm:p-8 rounded-2xl backdrop-blur-sm">
-                <h3 class="text-lg sm:text-xl font-bold text-red-400 mb-4 sm:mb-6 flex items-center gap-3"><i class="fa-solid fa-triangle-exclamation"></i> Kendala Utama di Lapangan</h3>
-                <ul class="space-y-3.5 text-xs sm:text-sm text-gray-300">
-                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Kurangnya rasa percaya diri saat memulai pembicaraan.</li>
-                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Rasa takut yang konstan akan kesalahan pelafalan (pronunciation).</li>
-                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Terbatasnya wadah atau partner untuk melatih speaking sehari-hari.</li>
-                </ul>
-            </div>
-            <div class="bg-darkCard border border-emerald-900/30 p-5 sm:p-8 rounded-2xl backdrop-blur-sm">
-                <h3 class="text-lg sm:text-xl font-bold text-emerald-400 mb-4 sm:mb-6 flex items-center gap-3"><i class="fa-solid fa-chart-line"></i> Peluang & Solusi MirrorTalk</h3>
-                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Kebutuhan komunikasi bahasa Inggris meningkat pesat di era globalisasi saat ini. MirrorTalk.id hadir menawarkan alternatif segar berbasis digital lewat cermin virtual yang melatih kemandirian.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="dashboard" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20 z-10 relative">
-        <div class="text-center space-y-3 mb-10">
-            <h2 class="text-2xl sm:text-3xl font-bold">Interaktif <span class="text-neonCyan">Live Dashboard</span></h2>
-            <p class="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto">Simulasikan alur sistem monitoring dan tantangan mingguan platform kami langsung di bawah ini.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
-            <div class="bg-darkCard border border-gray-800 p-5 sm:p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between items-center mb-4 sm:mb-6">
-                        <span class="text-[10px] uppercase font-mono tracking-wider text-gray-400">Voice Recording System</span>
-                        <span id="recordStatusDot" class="w-2 h-2 rounded-full bg-red-500"></span>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-1.5">Evaluasi Mandiri</h3>
-                    <p class="text-gray-400 text-xs mb-5">Klik tombol mikrofon di bawah untuk merekam suara asli Anda melalui browser secara langsung.</p>
                     
-                    <div class="bg-darkBg p-3.5 rounded-xl border border-gray-800 flex justify-between items-center gap-2">
-                        <span class="text-xs sm:text-sm font-medium truncate">Status Mikrofon:</span>
-                        <button id="recordBtn" onclick="toggleRecord()" class="px-3 py-2 shrink-0 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-[11px] font-bold font-mono transition-all">
-                            MIC OFF
+                    <div class="space-y-2 bg-doraLight/20 p-3 rounded-xl border border-doraBlue/20 text-xs">
+                        <div class="flex justify-between font-bold">
+                            <span>Confidence Score</span>
+                            <span class="text-doraBlue font-mono">82%</span>
+                        </div>
+                        <div class="flex justify-between font-bold">
+                            <span>Pronunciation Score</span>
+                            <span class="text-amber-500 font-mono">79%</span>
+                        </div>
+                        <div class="flex justify-between font-bold pt-1 border-t border-dashed border-gray-300">
+                            <span>Current Level</span>
+                            <span class="text-white bg-doraBlue px-2 py-0.5 rounded text-[10px]">Intermediate</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-[11px] font-bold text-doraDark">
+                            <span>Overall Progress Bar</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden p-0.5 border border-doraDark">
+                            <div class="bg-gradient-to-r from-doraBlue to-sky-400 h-full rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mainDashboard" class="hidden max-w-7xl mx-auto px-4 sm:px-6 py-8 z-20 relative">
+        <div class="bg-white border-4 border-doraYellow p-6 rounded-3xl shadow-xl space-y-8">
+            <div class="flex justify-between items-center border-b-2 border-doraLight pb-4">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-doraDark">Welcome back, Student! 👋</h2>
+                    <p class="text-xs text-gray-500 font-medium">Account successfully created. Let's start learning English now.</p>
+                </div>
+                <button onclick="logoutDashboard()" class="text-xs font-bold text-red-500 bg-red-50 px-3 py-1.5 rounded-xl border border-red-200 hover:bg-red-100">Logout</button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-1 bg-doraLight/40 border-2 border-doraBlue p-4 rounded-2xl">
+                    <h3 class="font-extrabold text-sm text-doraDark uppercase tracking-wider mb-3"><i class="fa-solid fa-list-check mr-1.5 text-doraBlue"></i> Choose a Topic</h3>
+                    <div class="space-y-2">
+                        <button onclick="selectTopic('Daily Conversation', 'Speak about your daily routine.', ['What time do you wake up?', 'What do you usually eat for breakfast?', 'How do you go to campus/work?'])" class="w-full text-left p-3 bg-white border border-gray-300 rounded-xl font-bold text-xs text-doraDark hover:border-doraBlue hover:bg-doraLight/30 transition-all flex justify-between items-center">
+                            <span>📌 Daily Conversation</span> <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                        </button>
+                        <button onclick="selectTopic('Self Introduction', 'Speak for 1–2 minutes about yourself.', ['What is your name?', 'Where are you from?', 'What are your hobbies?', 'Why do you want to learn English?'])" class="w-full text-left p-3 bg-white border border-gray-300 rounded-xl font-bold text-xs text-doraDark hover:border-doraBlue hover:bg-doraLight/30 transition-all flex justify-between items-center">
+                            <span>📌 Self Introduction</span> <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                        </button>
+                        <button onclick="selectTopic('Storytelling', 'Tell a short memorable story from your past.', ['When did it happen?', 'Who was with you?', 'Why is this memory so special?'])" class="w-full text-left p-3 bg-white border border-gray-300 rounded-xl font-bold text-xs text-doraDark hover:border-doraBlue hover:bg-doraLight/30 transition-all flex justify-between items-center">
+                            <span>📌 Storytelling</span> <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                        </button>
+                        <button onclick="selectTopic('Public Speaking', 'Deliver a brief persuasive speech topic.', ['What is the main message?', 'Why should the audience care?', 'What is your call to action?'])" class="w-full text-left p-3 bg-white border border-gray-300 rounded-xl font-bold text-xs text-doraDark hover:border-doraBlue hover:bg-doraLight/30 transition-all flex justify-between items-center">
+                            <span>📌 Public Speaking</span> <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                        </button>
+                        <button onclick="selectTopic('Job Interview', 'Answer common professional interview prompts.', ['Tell me about your strengths.', 'Why do you want to work here?', 'Where do you see yourself in 5 years?'])" class="w-full text-left p-3 bg-white border border-gray-300 rounded-xl font-bold text-xs text-doraDark hover:border-doraBlue hover:bg-doraLight/30 transition-all flex justify-between items-center">
+                            <span>📌 Job Interview</span> <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                        </button>
+                        <button onclick="selectTopic('Giving Opinions', 'Express your thoughts on current global issues.', ['What is your stance?', 'What facts support your opinion?', 'What is the counter-argument?'])" class="w-full text-left p-3 bg-white border border-gray-300 rounded-xl font-bold text-xs text-doraDark hover:border-doraBlue hover:bg-doraLight/30 transition-all flex justify-between items-center">
+                            <span>📌 Giving Opinions</span> <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                        </button>
+                        <button onclick="selectTopic('Presentation Skills', 'Introduce a project framework presentation.', ['What problem does it solve?', 'How does the workflow operate?', 'What are the expected results?'])" class="w-full text-left p-3 bg-white border border-gray-300 rounded-xl font-bold text-xs text-doraDark hover:border-doraBlue hover:bg-doraLight/30 transition-all flex justify-between items-center">
+                            <span>📌 Presentation Skills</span> <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
                         </button>
                     </div>
                 </div>
-                <div id="recordingArea" class="w-full"></div>
-            </div>
 
-            <div class="bg-darkCard border border-gray-800 p-5 sm:p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between items-center mb-4 sm:mb-6">
-                        <span class="text-[10px] uppercase font-mono tracking-wider text-gray-400">Speaking Challenges</span>
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-1.5">Tingkat Kesulitan & Materi</h3>
-                    <p class="text-gray-400 text-xs mb-4">Sesuaikan slider untuk mengganti topik materi tantangan berbicara harian Anda.</p>
-                    
-                    <div class="space-y-4 bg-darkBg p-4 rounded-xl border border-gray-800">
-                        <div class="flex justify-between text-xs sm:text-sm font-mono">
-                            <span>Level:</span>
-                            <span id="levelVal" class="text-neonCyan font-bold">Medium</span>
-                        </div>
-                        <input type="range" id="levelSlider" min="1" max="3" value="2" class="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-neonCyan">
-                        
-                        <div class="border-t border-gray-800 pt-3 mt-1">
-                            <span class="text-[10px] uppercase font-mono text-gray-500 block mb-1">Materi Latihan:</span>
-                            <p id="challengePrompt" class="text-xs text-gray-300 italic leading-relaxed">"Tell us about your favorite hobby and why you enjoy doing it in your spare time."</p>
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="bg-white border-2 border-gray-300 p-4 rounded-2xl" id="topicInstructionBox">
+                        <div class="text-center py-6 text-gray-400 text-xs font-medium">
+                            <i class="fa-solid fa-hand-pointer block text-2xl mb-2 text-doraBlue"></i>
+                            Please select a speaking topic from the left menu to view instructions.
                         </div>
                     </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white border-2 border-doraBlue p-4 rounded-2xl flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-xs uppercase text-gray-400 tracking-wider mb-2">7. Voice Recording System</h4>
+                                <p class="text-xs text-doraDark font-medium mb-4">Record your practice session for autonomous assessment feedback.</p>
+                            </div>
+                            <div class="space-y-2 bg-doraLight/30 p-3 rounded-xl border border-gray-200">
+                                <div class="flex justify-center gap-2">
+                                    <button onclick="triggerRecording('recording')" class="bg-red-500 text-white font-bold px-3 py-2 rounded-lg text-xs hover:bg-red-600 transition-all flex items-center gap-1"><i class="fa-solid fa-microphone"></i> Start</button>
+                                    <button onclick="triggerRecording('stopped')" class="bg-gray-700 text-white font-bold px-3 py-2 rounded-lg text-xs hover:bg-gray-800 transition-all flex items-center gap-1"><i class="fa-solid fa-stop"></i> Stop</button>
+                                    <button onclick="triggerRecording('playing')" class="bg-doraBlue text-white font-bold px-3 py-2 rounded-lg text-xs hover:bg-sky-600 transition-all flex items-center gap-1"><i class="fa-solid fa-play"></i> Play</button>
+                                </div>
+                                <div id="recordingStatusText" class="text-center font-mono text-[10px] text-gray-500 mt-2">Status: Idle</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border-2 border-doraBlue p-4 rounded-2xl">
+                            <h4 class="font-bold text-xs uppercase text-gray-400 tracking-wider mb-2">8. Pronunciation & Confidence Feedback</h4>
+                            <div class="space-y-2 text-xs">
+                                <div class="grid grid-cols-3 gap-1 text-center font-mono font-bold">
+                                    <div class="bg-emerald-50 border border-emerald-200 p-1 rounded"><span class="block text-[10px] text-gray-400 font-sans">Prono</span><span class="text-emerald-600">80%</span></div>
+                                    <div class="bg-blue-50 border border-blue-200 p-1 rounded"><span class="block text-[10px] text-gray-400 font-sans">Fluency</span><span class="text-blue-600">85%</span></div>
+                                    <div class="bg-amber-50 border border-amber-200 p-1 rounded"><span class="block text-[10px] text-gray-400 font-sans">Confidence</span><span class="text-amber-600">78%</span></div>
+                                </div>
+                                <div class="bg-gray-50 p-2 rounded-xl border border-gray-200 text-[11px] leading-relaxed">
+                                    <span class="font-bold text-doraDark block mb-0.5">Suggestions:</span>
+                                    <ul class="list-disc list-inside space-y-0.5 text-gray-600">
+                                        <li>Speak more slowly.</li>
+                                        <li>Practice difficult sounds.</li>
+                                        <li>Maintain eye contact with the mirror.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 border-2 border-doraYellow p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                        <div class="space-y-1">
+                            <span class="text-[10px] bg-doraYellow px-2 py-0.5 rounded-full font-bold text-doraDark border border-doraDark uppercase font-mono">🏆 This Week's Challenge</span>
+                            <h4 class="font-bold text-sm text-doraDark">Topic: "My Future Career"</h4>
+                            <p class="text-xs text-gray-600">Instructions: Speak for 2 minutes about your dream career.</p>
+                            <p class="text-[10px] text-red-500 font-bold font-mono">Deadline: Sunday, June 14, 2026</p>
+                        </div>
+                        <button onclick="alert('Recording successfully submitted for validation checking!')" class="w-full sm:w-auto px-4 py-2 bg-doraBlue hover:bg-sky-600 text-white font-bold text-xs rounded-xl shadow-md border border-doraDark">
+                            Submit Recording
+                        </button>
+                    </div>
+
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="bg-darkCard border border-gray-800 p-5 sm:p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
+    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 z-10 relative">
+        <div class="bg-white border-4 border-doraBlue p-6 sm:p-10 rounded-3xl text-center space-y-4 shadow-md">
+            <span class="text-xs uppercase font-mono tracking-wider text-doraBlue font-bold block">🌟 About Us</span>
+            <h2 class="text-2xl sm:text-4xl font-bold text-doraDark">Who We Are</h2>
+            <p class="text-gray-600 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed font-medium">
+                MirrorTalk.id is an innovative English speaking practice platform designed to help learners improve their communication skills through a unique mirror-based learning approach.
+            </p>
+            <p class="text-gray-600 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed font-medium">
+                We combine education, technology, and confidence-building strategies to create a comfortable learning environment where users can practice speaking English independently and without pressure.
+            </p>
+        </div>
+    </section>
+
+    <section id="problems" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 z-10 relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-start">
+            <div class="bg-white border-4 border-red-400 p-5 sm:p-8 rounded-3xl shadow-sm">
+                <span class="text-xs uppercase font-mono tracking-wider text-red-500 font-bold block mb-2">🚨 The Problem</span>
+                <h3 class="text-xl font-bold text-doraDark mb-4">Why Do Many Learners Struggle to Speak English?</h3>
+                <p class="text-gray-600 text-xs sm:text-sm mb-4 font-medium">Many students understand English grammar and vocabulary but still hesitate to speak because of:</p>
+                <ul class="space-y-3 text-xs sm:text-sm text-gray-700 font-bold">
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Lack of confidence</li>
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Fear of making pronunciation mistakes</li>
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Limited speaking opportunities</li>
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Uncomfortable learning environments</li>
+                </ul>
+                <p class="text-gray-500 text-xs sm:text-sm mt-4 italic">As a result, many learners find it difficult to communicate effectively despite having basic English knowledge.</p>
+            </div>
+            
+            <div class="bg-white border-4 border-emerald-400 p-5 sm:p-8 rounded-3xl shadow-sm">
+                <span class="text-xs uppercase font-mono tracking-wider text-emerald-600 font-bold block mb-2">💡 Our Solution</span>
+                <h3 class="text-xl font-bold text-doraDark mb-4">A Smarter Way to Practice Speaking</h3>
+                <p class="text-gray-600 text-xs sm:text-sm mb-4 font-medium">MirrorTalk.id provides a private and flexible learning experience through a mirror-based learning method that encourages self-awareness and confidence. Our platform helps users:</p>
+                <ul class="space-y-3 text-xs sm:text-sm text-gray-700 font-bold">
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-check text-emerald-500 mt-1 shrink-0"></i> Practice speaking independently</li>
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-check text-emerald-500 mt-1 shrink-0"></i> Improve pronunciation and fluency</li>
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-check text-emerald-500 mt-1 shrink-0"></i> Build self-confidence</li>
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-check text-emerald-500 mt-1 shrink-0"></i> Learn in a pressure-free environment</li>
+                    <li class="flex gap-2.5"><i class="fa-solid fa-circle-check text-emerald-500 mt-1 shrink-0"></i> Track speaking progress consistently</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 z-10 relative">
+        <div class="text-center space-y-3 mb-8">
+            <span class="text-xs uppercase font-mono tracking-wider text-doraBlue font-bold block">🎯 Features & Services</span>
+            <h2 class="text-2xl sm:text-4xl font-bold text-doraDark">What We Offer</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white border-2 border-doraBlue p-5 sm:p-6 rounded-2xl shadow-sm">
+                <div class="text-2xl mb-3">🗣️</div>
+                <h4 class="font-bold text-base text-doraDark mb-1">Topic-Based Speaking Practice</h4>
+                <p class="text-gray-600 text-xs leading-relaxed font-medium">Practice speaking through various topics such as daily conversations, storytelling, presentations, and job interviews.</p>
+            </div>
+            <div class="bg-white border-2 border-doraBlue p-5 sm:p-6 rounded-2xl shadow-sm">
+                <div class="text-2xl mb-3">🎙️</div>
+                <h4 class="font-bold text-base text-doraDark mb-1">Voice Recording System</h4>
+                <p class="text-gray-600 text-xs leading-relaxed font-medium">Record your voice and evaluate your speaking performance independently.</p>
+            </div>
+            <div class="bg-white border-2 border-doraBlue p-5 sm:p-6 rounded-2xl shadow-sm">
+                <div class="text-2xl mb-3">📈</div>
+                <h4 class="font-bold text-base text-doraDark mb-1">Pronunciation & Confidence Feedback</h4>
+                <p class="text-gray-600 text-xs leading-relaxed font-medium">Receive feedback to improve pronunciation, fluency, and confidence.</p>
+            </div>
+            <div class="bg-white border-2 border-doraBlue p-5 sm:p-6 rounded-2xl shadow-sm">
+                <div class="text-2xl mb-3">🏆</div>
+                <h4 class="font-bold text-base text-doraDark mb-1">Weekly Speaking Challenges</h4>
+                <p class="text-gray-600 text-xs leading-relaxed font-medium">Stay motivated through interactive speaking challenges every week.</p>
+            </div>
+            <div class="bg-white border-2 border-doraBlue p-5 sm:p-6 rounded-2xl shadow-sm">
+                <div class="text-2xl mb-3">📱</div>
+                <h4 class="font-bold text-base text-doraDark mb-1">Flexible Learning System</h4>
+                <p class="text-gray-600 text-xs leading-relaxed font-medium">Learn anytime and anywhere according to your personal schedule.</p>
+            </div>
+            <div class="bg-white border-2 border-dashed border-doraBlue p-5 sm:p-6 rounded-2xl flex flex-col justify-center items-center text-center">
+                <span class="text-xs uppercase font-mono tracking-wider text-doraBlue font-bold block mb-1">⭐ Advantages</span>
+                <p class="text-doraDark text-xs font-bold">Suitable for beginners and introverted learners.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="program" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 z-10 relative">
+        <div class="text-center space-y-2 mb-6">
+            <span class="text-xs uppercase font-mono tracking-wider text-doraBlue font-bold block">📅 Learning Program</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-doraDark">Weekly Learning Schedule</h2>
+        </div>
+        <div class="w-full overflow-x-auto bg-white border-4 border-doraBlue rounded-3xl shadow-sm">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse min-w-[500px]">
+                <thead>
+                    <tr class="border-b-2 border-doraBlue bg-doraLight font-mono text-doraDark uppercase text-[11px]">
+                        <th class="p-4 font-bold">Day</th>
+                        <th class="p-4 font-bold">Activity</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 text-gray-700 font-medium">
+                    <tr><td class="p-4 font-bold text-doraDark">Monday</td><td class="p-4">Introduction to Speaking Topic</td></tr>
+                    <tr><td class="p-4 font-bold text-doraDark">Tuesday</td><td class="p-4">Guided Speaking Practice</td></tr>
+                    <tr><td class="p-4 font-bold text-doraDark">Wednesday</td><td class="p-4">Pronunciation Practice</td></tr>
+                    <tr><td class="p-4 font-bold text-doraDark">Thursday</td><td class="p-4">Voice Recording Session</td></tr>
+                    <tr><td class="p-4 font-bold text-doraDark">Friday</td><td class="p-4">Self-Reflection & Evaluation</td></tr>
+                    <tr><td class="p-4 font-bold text-doraDark">Saturday</td><td class="p-4">Speaking Challenge</td></tr>
+                    <tr><td class="p-4 font-bold text-doraDark">Sunday</td><td class="p-4">Feedback & Progress Review</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="pricing" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 z-10 relative">
+        <div class="text-center space-y-2 mb-8">
+            <span class="text-xs uppercase font-mono tracking-wider text-doraBlue font-bold block">💰 Pricing Plans</span>
+            <h2 class="text-2xl sm:text-4xl font-bold text-doraDark">Choose Your Learning Package</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            <div class="bg-white border-2 border-gray-300 p-6 rounded-2xl flex flex-col justify-between text-center shadow-sm">
                 <div>
-                    <div class="flex justify-between items-center mb-4 sm:mb-6">
-                        <span class="text-[10px] uppercase font-mono tracking-wider text-gray-400">Confidence Feedback</span>
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-1.5">Statistik Kepercayaan Diri</h3>
-                    <p class="text-gray-400 text-xs mb-5">Data real-time evaluasi performa dari modul latihan mandiri terakhir Anda.</p>
-                    
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="bg-darkBg p-3 sm:p-4 rounded-xl border border-gray-800 text-center">
-                            <span class="text-gray-500 text-[10px] sm:text-xs block mb-1">Skor Pronunciation</span>
-                            <span id="pronoScore" class="text-xl sm:text-2xl font-extrabold text-orange-400 font-mono">82%</span>
-                        </div>
-                        <div class="bg-darkBg p-3 sm:p-4 rounded-xl border border-gray-800 text-center">
-                            <span class="text-gray-500 text-[10px] sm:text-xs block mb-1">Fluency Rate</span>
-                            <span id="fluencyScore" class="text-xl sm:text-2xl font-extrabold text-blue-400 font-mono">78%</span>
-                        </div>
-                    </div>
+                    <h4 class="font-bold text-lg text-doraDark mb-1">Basic Package</h4>
+                    <div class="text-2xl font-extrabold text-doraBlue font-mono my-2">Rp10.000</div>
+                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Suitable for beginners who want to start practicing English speaking.</p>
                 </div>
-                <button onclick="randomizeStats()" class="mt-5 w-full py-2.5 bg-gray-800 border border-gray-700 rounded-xl text-xs font-semibold hover:bg-gray-700 transition-colors">
-                    <i class="fa-solid fa-arrows-rotate mr-1"></i> Hitung Ulang Skor Baru
+                <button onclick="openPackageModal('Basic', 'Rp10.000', ['Access to 5 speaking topics', 'Basic pronunciation exercises', 'Weekly speaking challenge', 'Learning materials'])" class="mt-6 w-full py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-xl text-xs font-bold border border-doraDark block shadow-md">
+                    Choose Basic Package
+                </button>
+            </div>
+            <div class="bg-white border-4 border-doraBlue p-6 rounded-2xl flex flex-col justify-between text-center relative shadow-lg">
+                <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-doraYellow text-doraDark text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider font-mono border border-doraDark">Popular</span>
+                <div>
+                    <h4 class="font-bold text-lg text-doraBlue mb-1">Intermediate Package</h4>
+                    <div class="text-2xl font-extrabold text-doraDark font-mono my-2">Rp25.000</div>
+                    <p class="text-gray-500 text-xs font-medium leading-relaxed">For learners who want more speaking practice and feedback.</p>
+                </div>
+                <button onclick="openPackageModal('Intermediate', 'Rp25.000', ['Access to 15 speaking topics', 'Voice recording feature', 'Pronunciation feedback', 'Weekly speaking challenges', 'Progress tracking'])" class="mt-6 w-full py-2.5 bg-doraBlue hover:bg-sky-600 text-white font-bold rounded-xl text-xs border border-doraDark block shadow-md">
+                    Choose Intermediate Package
+                </button>
+            </div>
+            <div class="bg-white border-2 border-gray-300 p-6 rounded-2xl flex flex-col justify-between text-center shadow-sm">
+                <div>
+                    <h4 class="font-bold text-lg text-doraDark mb-1">Premium Package</h4>
+                    <div class="text-2xl font-extrabold text-doraBlue font-mono my-2">Rp35.000</div>
+                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Complete learning experience with advanced speaking activities and personalized feedback.</p>
+                </div>
+                <button onclick="openPackageModal('Premium', 'Rp35.000', ['Unlimited speaking topics', 'Personalized feedback', 'Advanced speaking challenges', 'Progress dashboard', 'Priority support'])" class="mt-6 w-full py-2.5 bg-doraYellow hover:bg-amber-400 text-doraDark font-bold rounded-xl text-xs border border-doraDark block shadow-md">
+                    Choose Premium Package
                 </button>
             </div>
         </div>
+    </section>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mt-6 md:mt-8">
-            <div class="bg-darkCard border border-gray-800 p-5 sm:p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between lg:col-span-1">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 py-8 z-10 relative">
+        <div class="text-center space-y-2 mb-8">
+            <span class="text-xs uppercase font-mono tracking-wider text-doraBlue font-bold block">👨‍💼 Management Team</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-doraDark">Meet Our Team</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white border-2 border-doraBlue p-5 rounded-2xl text-center shadow-sm">
+                <div class="w-12 h-12 bg-doraLight text-doraBlue rounded-full flex items-center justify-center font-bold font-mono mx-auto mb-3 border border-doraBlue">LS</div>
+                <h4 class="font-bold text-doraDark text-sm sm:text-base">Lailaty Shofiya</h4>
+                <span class="text-[10px] text-doraBlue font-mono uppercase font-bold block mb-2">Program Coordinator</span>
+                <p class="text-gray-600 text-xs leading-relaxed font-medium">Responsible for managing, supervising, and coordinating the overall development of MirrorTalk.id.</p>
+            </div>
+            <div class="bg-white border-2 border-doraBlue p-5 rounded-2xl text-center shadow-sm">
+                <div class="w-12 h-12 bg-doraLight text-doraBlue rounded-full flex items-center justify-center font-bold font-mono mx-auto mb-3 border border-doraBlue">LN</div>
+                <h4 class="font-bold text-doraDark text-sm sm:text-base">Lailin Nafi’ah</h4>
+                <span class="text-[10px] text-doraBlue font-mono uppercase font-bold block mb-2">Content Specialist</span>
+                <p class="text-gray-600 text-xs leading-relaxed font-medium">Responsible for developing speaking materials, learning activities, educational content, and user learning experiences.</p>
+            </div>
+            <div class="bg-white border-2 border-doraBlue p-5 rounded-2xl text-center shadow-sm">
+                <div class="w-12 h-12 bg-doraLight text-doraBlue rounded-full flex items-center justify-center font-bold font-mono mx-auto mb-3 border border-doraBlue">SL</div>
+                <h4 class="font-bold text-doraDark text-sm sm:text-base">Syarifatul Laily</h4>
+                <span class="text-[10px] text-doraBlue font-mono uppercase font-bold block mb-2">Marketing & Branding Specialist</span>
+                <p class="text-gray-600 text-xs leading-relaxed font-medium">Responsible for promotion, branding, social media management, and user engagement strategies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 z-10 relative">
+        <div class="bg-white border-4 border-doraBlue p-5 sm:p-8 rounded-3xl shadow-sm space-y-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b-2 border-doraLight pb-4">
                 <div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-[10px] uppercase font-mono tracking-wider text-gray-400">Admin & Platform Review</span>
-                        <i class="fa-solid fa-star text-neonCyan"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-1.5">Berikan Penilaian</h3>
-                    <p class="text-gray-400 text-xs mb-4">Puas dengan respon admin atau kualitas platform? Kirimkan ulasan Anda!</p>
-                    
-                    <form id="reviewForm" onsubmit="handleReviewSubmit(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-gray-400 text-[10px] font-mono mb-1 uppercase">Nama Pengguna</label>
-                            <input type="text" id="reviewerName" placeholder="Contoh: Andi Wijaya" class="w-full bg-darkBg border border-gray-700 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-neonCyan text-white" required>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-gray-400 text-[10px] font-mono mb-1 uppercase">Rating Layanan</label>
-                            <div class="flex items-center space-x-2 text-lg py-1">
-                                <input type="hidden" id="ratingValue" value="0">
-                                <i class="fa-solid fa-star text-gray-700 cursor-pointer star-btn" onclick="setRating(1)"></i>
-                                <i class="fa-solid fa-star text-gray-700 cursor-pointer star-btn" onclick="setRating(2)"></i>
-                                <i class="fa-solid fa-star text-gray-700 cursor-pointer star-btn" onclick="setRating(3)"></i>
-                                <i class="fa-solid fa-star text-gray-700 cursor-pointer star-btn" onclick="setRating(4)"></i>
-                                <i class="fa-solid fa-star text-gray-700 cursor-pointer star-btn" onclick="setRating(5)"></i>
-                                <span id="ratingLabel" class="text-xs text-gray-500 font-bold ml-2 font-mono">0/5</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-gray-400 text-[10px] font-mono mb-1 uppercase">Ulasan / Masukan</label>
-                            <textarea id="reviewerText" rows="3" placeholder="Admin sangat cepat merespon dan ramah..." class="w-full bg-darkBg border border-gray-700 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-neonCyan text-white resize-none" required></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg font-bold rounded-xl text-xs shadow-md shadow-cyan-500/10 hover:opacity-90 transition-all transform hover:scale-[1.02]">
-                            Kirim Ulasan Resmi
-                        </button>
-                    </form>
+                    <h3 class="text-xl font-extrabold text-doraDark">💬 User Testimonials</h3>
+                    <p class="text-xs text-gray-500 font-medium">See what our global active learners say about MirrorTalk.id</p>
+                </div>
+                <span class="bg-doraLight text-doraBlue px-4 py-1.5 rounded-full font-mono text-xs font-bold border border-doraBlue shrink-0">⭐ 5.0 Rating Platform</span>
+            </div>
+            
+            <div id="testimonialGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-doraLight/30 border border-gray-200 p-4 rounded-xl shadow-sm transition-all">
+                    <span class="text-xs font-bold text-doraDark block">Sarah</span>
+                    <span class="text-[10px] text-gray-400 font-medium block mb-1">High School Student</span>
+                    <span class="text-doraYellow text-[10px]">★★★★★</span>
+                    <p class="text-gray-600 text-xs italic mt-1">"MirrorTalk.id helped me become more confident when speaking English in class."</p>
+                </div>
+                <div class="bg-doraLight/30 border border-gray-200 p-4 rounded-xl shadow-sm transition-all">
+                    <span class="text-xs font-bold text-doraDark block">Kevin</span>
+                    <span class="text-[10px] text-gray-400 font-medium block mb-1">College Student</span>
+                    <span class="text-doraYellow text-[10px]">★★★★★</span>
+                    <p class="text-gray-600 text-xs italic mt-1">"The mirror-based learning method is simple, unique, and very effective."</p>
+                </div>
+                <div class="bg-doraLight/30 border border-gray-200 p-4 rounded-xl shadow-sm transition-all">
+                    <span class="text-xs font-bold text-doraDark block">Anisa</span>
+                    <span class="text-[10px] text-gray-400 font-medium block mb-1">Job Seeker</span>
+                    <span class="text-doraYellow text-[10px]">★★★★★</span>
+                    <p class="text-gray-600 text-xs italic mt-1">"I felt more prepared and confident for my English job interview."</p>
                 </div>
             </div>
 
-            <div class="bg-darkCard border border-gray-800 p-5 sm:p-6 rounded-2xl backdrop-blur-sm lg:col-span-2 flex flex-col">
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
+            <div class="bg-doraLight/20 border-2 border-dashed border-doraBlue p-5 rounded-2xl max-w-xl mx-auto">
+                <h4 class="font-extrabold text-sm text-doraDark text-center mb-3">✍️ Leave Your Review & Rating</h4>
+                <form onsubmit="submitUserReview(event)" class="space-y-3 text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-bold text-doraDark mb-1">Your Name</label>
+                            <input type="text" id="revName" placeholder="e.g. John Doe" class="w-full bg-white border border-gray-300 rounded-xl px-3 py-2 outline-none focus:border-doraBlue" required>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-doraDark mb-1">Status / Occupation</label>
+                            <input type="text" id="revStatus" placeholder="e.g. University Student" class="w-full bg-white border border-gray-300 rounded-xl px-3 py-2 outline-none focus:border-doraBlue" required>
+                        </div>
+                    </div>
+                    
                     <div>
-                        <h3 class="text-lg sm:text-xl font-bold">Ulasan Pengguna</h3>
-                        <p class="text-gray-400 text-xs">Apa kata mereka mengenai layanan Admin & Fitur MirrorTalk.id</p>
-                    </div>
-                    <div class="bg-gray-800/60 border border-gray-700 px-3 py-1.5 rounded-xl text-center self-start sm:self-auto min-w-[70px]">
-                        <span class="text-[10px] text-gray-400 block font-mono">Rata-rata</span>
-                        <span id="avgRatingScore" class="text-base sm:text-lg font-bold text-neonCyan font-mono">4.5</span>
-                    </div>
-                </div>
-
-                <div id="reviewsList" class="review-container space-y-4 max-h-[310px] overflow-y-auto pr-1">
-                    <div class="bg-darkBg/60 border border-gray-800 p-4 rounded-xl space-y-2">
-                        <div class="flex justify-between items-center gap-2">
-                            <div class="flex items-center gap-2 min-w-0">
-                                <div class="w-7 h-7 shrink-0 bg-neonPurple/20 text-neonPurple rounded-full flex items-center justify-center text-xs font-bold font-mono">R</div>
-                                <span class="text-xs font-bold text-white truncate">Rina Atika</span>
-                            </div>
-                            <div class="text-amber-400 text-[11px] font-mono shrink-0">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 5/5
-                            </div>
+                        <label class="block font-bold text-doraDark mb-1">Your Rating</label>
+                        <div class="flex items-center gap-1.5 text-lg">
+                            <input type="hidden" id="revRatingValue" value="5">
+                            <button type="button" onclick="setStarRating(1)" class="star-btn text-doraYellow transition-colors"><i class="fa-solid fa-star"></i></button>
+                            <button type="button" onclick="setStarRating(2)" class="star-btn text-doraYellow transition-colors"><i class="fa-solid fa-star"></i></button>
+                            <button type="button" onclick="setStarRating(3)" class="star-btn text-doraYellow transition-colors"><i class="fa-solid fa-star"></i></button>
+                            <button type="button" onclick="setStarRating(4)" class="star-btn text-doraYellow transition-colors"><i class="fa-solid fa-star"></i></button>
+                            <button type="button" onclick="setStarRating(5)" class="star-btn text-doraYellow transition-colors"><i class="fa-solid fa-star"></i></button>
+                            <span id="starRatingLabel" class="text-xs font-mono font-bold text-gray-500 ml-2">5/5 Stars</span>
                         </div>
-                        <p class="text-gray-400 text-xs leading-relaxed italic">"Respon Kak Elin sebagai admin cepat sekali saat ditanya lewat WA. Platformnya juga ngebantu banget."</p>
                     </div>
 
-                    <div class="bg-darkBg/60 border border-gray-800 p-4 rounded-xl space-y-2">
-                        <div class="flex justify-between items-center gap-2">
-                            <div class="flex items-center gap-2 min-w-0">
-                                <div class="w-7 h-7 shrink-0 bg-neonCyan/20 text-neonCyan rounded-full flex items-center justify-center text-xs font-bold font-mono">M</div>
-                                <span class="text-xs font-bold text-white truncate">Muhammad Fajar</span>
-                            </div>
-                            <div class="text-amber-400 text-[11px] font-mono shrink-0">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star text-gray-700"></i> 4/5
-                            </div>
-                        </div>
-                        <p class="text-gray-400 text-xs leading-relaxed italic">"Fitur evaluasi mandiri mic-nya jalan lancar. Adminnya ramah waktu ngasih instruksi."</p>
+                    <div>
+                        <label class="block font-bold text-doraDark mb-1">Your Review Message</label>
+                        <textarea id="revMessage" rows="3" placeholder="Share your practice experience using MirrorTalk.id..." class="w-full bg-white border border-gray-300 rounded-xl px-3 py-2 outline-none focus:border-doraBlue resize-none" required></textarea>
                     </div>
+
+                    <button type="submit" class="w-full bg-doraBlue hover:bg-sky-600 text-white font-extrabold py-2.5 rounded-xl border border-doraDark shadow-md uppercase tracking-wider text-[11px]">
+                        Submit My Review
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 py-8 z-10 relative">
+        <div class="text-center space-y-2 mb-6">
+            <span class="text-xs uppercase font-mono tracking-wider text-doraBlue font-bold block">❓ FAQ</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-doraDark">Frequently Asked Questions</h2>
+        </div>
+        <div class="space-y-3">
+            <div class="bg-white border-2 border-gray-200 p-4 rounded-xl">
+                <h4 class="font-bold text-sm text-doraDark mb-1">What is MirrorTalk.id?</h4>
+                <p class="text-gray-600 text-xs sm:text-sm font-medium">MirrorTalk.id is an English speaking practice platform that uses a mirror-based learning method to improve speaking skills and confidence.</p>
+            </div>
+            <div class="bg-white border-2 border-gray-200 p-4 rounded-xl">
+                <h4 class="font-bold text-sm text-doraDark mb-1">Who can use MirrorTalk.id?</h4>
+                <p class="text-gray-600 text-xs sm:text-sm font-medium">Students, college students, job seekers, independent learners, and anyone who wants to improve their English speaking ability.</p>
+            </div>
+            <div class="bg-white border-2 border-gray-200 p-4 rounded-xl">
+                <h4 class="font-bold text-sm text-doraDark mb-1">Do I need a speaking partner?</h4>
+                <p class="text-gray-600 text-xs sm:text-sm font-medium">No. MirrorTalk.id allows users to practice independently using the mirror-based learning approach.</p>
+            </div>
+            <div class="bg-white border-2 border-gray-200 p-4 rounded-xl">
+                <h4 class="font-bold text-sm text-doraDark mb-1">Can I learn at my own pace?</h4>
+                <p class="text-gray-600 text-xs sm:text-sm font-medium">Yes. Our platform is designed to support flexible and self-paced learning.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 py-8 z-10 relative border-t-2 border-doraBlue">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start pt-6">
+            <div class="space-y-3">
+                <span class="text-xs uppercase font-mono tracking-wider text-doraBlue font-bold block">🚀 Our Vision</span>
+                <h3 class="text-xl font-bold text-doraDark">Empowering Learners to Speak with Confidence</h3>
+                <p class="text-gray-600 text-xs sm:text-sm leading-relaxed font-medium">
+                    Our vision is to become a leading digital platform that helps learners communicate confidently in English through innovative, accessible, and confidence-focused speaking practice.
+                </p>
+            </div>
+            <div class="space-y-4 bg-white border-2 border-doraBlue p-5 rounded-2xl" id="contact">
+                <span class="text-xs uppercase font-mono tracking-wider text-doraBlue font-bold block">📞 Contact Us</span>
+                <h3 class="text-xl font-bold text-doraDark">Get In Touch</h3>
+                <div class="space-y-2 text-xs sm:text-sm text-gray-700 font-mono font-medium">
+                    <p class="flex items-center gap-2"><i class="fa-solid fa-envelope text-doraBlue w-4"></i> Email: mirrortalk.id@gmail.com</p>
+                    <p class="flex items-center gap-2"><i class="fa-brands fa-instagram text-doraBlue w-4"></i> Instagram: <a href="https://www.instagram.com/mirrortalk.id1?igsh=MWo2OHQydTB3cGZlaQ==" target="_blank" class="hover:underline text-doraBlue">@mirrortalk.id1</a></p>
+                    <p class="flex items-center gap-2"><i class="fa-brands fa-tiktok text-doraDark w-4"></i> TikTok: <a href="https://www.tiktok.com/@mirrortalk.id?_r=1&_t=ZS-96jPgtfu0TS" target="_blank" class="hover:underline text-doraBlue">@mirrortalk.id</a></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-3">
-        <button onclick="openWhatsApp()" class="flex items-center justify-center w-12 h-12 sm:w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-2xl transition-all transform hover:scale-110">
-            <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
-        </button>
-    </div>
-
-    <div class="fixed bottom-4 left-4 z-50">
-        <button onclick="toggleAIChat()" class="flex items-center justify-center w-12 h-12 sm:w-14 h-14 bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg rounded-full shadow-xl transition-all transform hover:scale-110">
-            <i class="fa-solid fa-robot text-xl sm:text-2xl animate-pulse"></i>
-        </button>
-
-        <div id="aiChatWindow" class="hidden absolute bottom-16 left-0 w-[calc(100vw-32px)] sm:w-96 max-w-[360px] sm:max-w-none bg-[#0e1626]/95 border border-gray-800 rounded-2xl shadow-2xl flex flex-col backdrop-blur-xl overflow-hidden">
-            <div class="p-4 bg-gradient-to-r from-gray-900 to-darkBg border-b border-gray-800 flex justify-between items-center">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping"></div>
+    <div id="registerModal" class="hidden fixed inset-0 bg-doraDark/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div class="bg-white border-4 border-doraBlue w-full max-w-md rounded-3xl p-6 relative shadow-2xl">
+            <button onclick="closeModal('registerModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="text-center mb-4">
+                <span class="text-[10px] bg-doraYellow text-doraDark px-3 py-0.5 rounded-full font-bold border border-doraDark uppercase font-mono">Start Your Learning Journey</span>
+                <h3 class="text-xl font-extrabold text-doraDark mt-1.5">Welcome to MirrorTalk.id!</h3>
+                <p class="text-xs text-gray-500 font-medium">Please create your account to begin your English speaking practice.</p>
+            </div>
+            <form onsubmit="handleRegisterSubmit(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block text-doraDark font-bold mb-1">Full Name</label>
+                    <input type="text" placeholder="Your complete name" class="w-full bg-doraLight/30 border-2 border-gray-200 rounded-xl px-3 py-2 text-doraDark font-medium focus:border-doraBlue outline-none" required>
+                </div>
+                <div>
+                    <label class="block text-doraDark font-bold mb-1">Email Address</label>
+                    <input type="email" placeholder="name@example.com" class="w-full bg-doraLight/30 border-2 border-gray-200 rounded-xl px-3 py-2 text-doraDark font-medium focus:border-doraBlue outline-none" required>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
                     <div>
-                        <h4 class="text-sm font-bold text-white">MirrorTalk AI Assistant</h4>
-                        <span class="text-[10px] text-neonCyan uppercase font-mono">Online</span>
+                        <label class="block text-doraDark font-bold mb-1">Password</label>
+                        <input type="password" placeholder="••••••••" class="w-full bg-doraLight/30 border-2 border-gray-200 rounded-xl px-3 py-2 text-doraDark font-medium focus:border-doraBlue outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-doraDark font-bold mb-1">Confirm Password</label>
+                        <input type="password" placeholder="••••••••" class="w-full bg-doraLight/30 border-2 border-gray-200 rounded-xl px-3 py-2 text-doraDark font-medium focus:border-doraBlue outline-none" required>
                     </div>
                 </div>
-                <button onclick="toggleAIChat()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-            </div>
-
-            <div id="chatMessages" class="chat-container p-4 h-56 sm:h-64 overflow-y-auto space-y-3 text-xs flex flex-col">
-                <div class="bg-gray-800/50 p-3 rounded-xl max-w-[85%] border border-gray-800 text-gray-300 self-start">
-                    Hello Learner! 👋 Ada yang bisa saya bantu terkait detail produk MirrorTalk.id?
+                <div>
+                    <label class="block text-doraDark font-bold mb-1">Speaking Level</label>
+                    <select class="w-full bg-doraLight/30 border-2 border-gray-200 rounded-xl px-3 py-2 text-doraDark font-bold focus:border-doraBlue outline-none">
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
                 </div>
-            </div>
-
-            <form id="aiChatForm" onsubmit="handleChatSubmit(event)" class="p-3 bg-gray-900/80 border-t border-gray-800 flex gap-2">
-                <input type="text" id="aiInput" placeholder="Ketik pertanyaan..." class="flex-1 bg-darkBg border border-gray-700 rounded-lg px-3 py-2 text-xs text-white" required>
-                <button type="submit" class="bg-gradient-to-r from-neonPurple to-neonCyan text-darkBg px-3 rounded-lg font-bold"><i class="fa-solid fa-paper-plane"></i></button>
+                <button type="submit" class="w-full py-3 mt-2 bg-doraBlue hover:bg-sky-600 text-white font-extrabold rounded-xl border-2 border-doraDark shadow-md uppercase tracking-wider">
+                    Create Account
+                </button>
             </form>
         </div>
     </div>
 
+    <div id="packageModal" class="hidden fixed inset-0 bg-doraDark/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div class="bg-white border-4 border-doraYellow w-full max-w-sm rounded-3xl p-6 relative shadow-2xl">
+            <button onclick="closeModal('packageModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="text-center mb-4">
+                <h3 id="pckTitle" class="text-xl font-extrabold text-doraDark">Package Details</h3>
+                <div id="pckPrice" class="text-2xl font-mono font-extrabold text-doraBlue my-1">Rp0</div>
+            </div>
+            <div class="space-y-2 mb-5">
+                <span class="text-[10px] font-bold uppercase text-gray-400 block tracking-wider">Included Features:</span>
+                <ul id="pckFeaturesList" class="space-y-2 text-xs text-gray-700 font-bold list-none">
+                    </ul>
+            </div>
+            <button onclick="redirectToPackageWA()" class="w-full py-3 bg-doraBlue hover:bg-sky-600 text-white font-extrabold rounded-xl border-2 border-doraDark shadow-md uppercase tracking-wider text-xs">
+                Purchase Now
+            </button>
+        </div>
+    </div>
+
+    <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+        <a href="https://wa.me/6281999321260?text=Hello%20MirrorTalk%20Team%2C%20I%20would%20like%20to%20join%20the%20Free%20Trial%20Program." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-lg transform hover:scale-110 transition-all">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+        </a>
+        <button onclick="toggleAIChat()" class="flex items-center justify-center w-12 h-12 bg-doraYellow border-2 border-doraDark text-doraDark rounded-full shadow-lg transform hover:scale-110 transition-all">
+            <i class="fa-solid fa-robot text-xl"></i>
+        </button>
+    </div>
+
+    <div id="aiChatWindow" class="hidden fixed bottom-20 right-4 w-[calc(100vw-32px)] sm:w-80 bg-white border-4 border-doraBlue rounded-2xl shadow-2xl flex flex-col z-50 overflow-hidden text-xs">
+        <div class="p-3 bg-doraLight border-b-2 border-doraBlue flex justify-between items-center font-bold text-doraDark">
+            <span>MirrorTalk Assistant Bot</span>
+            <button onclick="toggleAIChat()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="chatMessages" class="chat-container p-3 h-48 overflow-y-auto space-y-2 flex flex-col font-medium">
+            <div class="bg-gray-100 p-2 rounded-xl max-w-[85%] self-start text-gray-700">Hello! Ask me anything about our unique mirror-based learning environment. ✨</div>
+        </div>
+        <form onsubmit="handleChatSubmit(event)" class="p-2 border-t border-gray-200 bg-gray-50 flex gap-1.5">
+            <input type="text" id="aiInput" placeholder="Type a message..." class="flex-1 bg-white border border-gray-300 rounded-lg px-2 py-1 outline-none font-medium" required>
+            <button type="submit" class="bg-doraBlue text-white px-3 rounded-lg font-bold"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+    </div>
+
+    <footer class="bg-white border-t-4 border-doraBlue py-6 text-center space-y-1 text-xs text-gray-500 font-medium">
+        <p class="font-extrabold text-doraDark tracking-wider">MirrorTalk.id</p>
+        <p class="text-[11px]">Practice English. Build Confidence. Speak Without Fear.</p>
+        <p class="text-[10px] font-mono pt-1">© 2026 MirrorTalk.id. All Rights Reserved.</p>
+    </footer>
+
     <script>
-        const NOMOR_WHATSAPP = "6281999321260"; 
-        const TEKS_OTOMATIS = "Halo Admin MirrorTalk.id! Saya tertarik dengan platform praktik bahasa Inggris berbasis mirror-learning ini.";
+        let currentSelectedPackage = '';
 
-        function openWhatsApp() {
-            window.open(`https://api.whatsapp.com/send?phone=${NOMOR_WHATSAPP}&text=${encodeURIComponent(TEKS_OTOMATIS)}`, '_blank');
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
         }
-
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
         function toggleAIChat() {
             document.getElementById('aiChatWindow').classList.toggle('hidden');
         }
 
-        // ==================== 1. AKTIF: REAL VOICE RECORDER ENGINE ====================
-        let mediaRecorder, audioChunks = [], recordOn = false, audioStream;
+        // 1. GET STARTED ACTION FLOW TO DASHBOARD
+        function handleRegisterSubmit(e) {
+            e.preventDefault();
+            closeModal('registerModal');
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('mainDashboard').classList.remove('hidden');
+            document.getElementById('mainDashboard').scrollIntoView({ behavior: 'smooth' });
+        }
 
-        async function toggleRecord() {
-            const btn = document.getElementById('recordBtn');
-            const dot = document.getElementById('recordStatusDot');
-            const area = document.getElementById('recordingArea');
+        function logoutDashboard() {
+            document.getElementById('mainDashboard').classList.add('hidden');
+            document.getElementById('home').classList.remove('hidden');
+        }
+
+        // 3,4,5. PACKAGE MANAGEMENT TRANSITIONS
+        function openPackageModal(name, price, features) {
+            currentSelectedPackage = name;
+            document.getElementById('pckTitle').textContent = `${name} Package Details`;
+            document.getElementById('pckPrice').textContent = price;
             
-            recordOn = !recordOn;
-            if (recordOn) {
-                try {
-                    let oldPlay = document.getElementById('audioContainer');
-                    if(oldPlay) oldPlay.remove();
+            const listContainer = document.getElementById('pckFeaturesList');
+            listContainer.innerHTML = '';
+            features.forEach(feat => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center gap-2';
+                li.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-500 text-[10px]"></i> <span>${feat}</span>`;
+                listContainer.appendChild(li);
+            });
+            openModal('packageModal');
+        }
 
-                    audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                    mediaRecorder = new NewMediaRecorder(audioStream);
-                    function NewMediaRecorder(s){ return new MediaRecorder(s); }
-                    
-                    audioChunks = [];
-                    mediaRecorder.ondataavailable = e => { if(e.data.size > 0) audioChunks.push(e.data); };
-                    
-                    mediaRecorder.onstop = () => {
-                        const blob = new Blob(audioChunks, { type: 'audio/wav' });
-                        const url = URL.createObjectURL(blob);
-                        
-                        const container = document.createElement('div');
-                        container.id = 'audioContainer';
-                        container.className = 'mt-3 p-2 bg-darkBg rounded-lg border border-gray-800';
-                        container.innerHTML = `
-                            <audio src="${url}" controls class="w-full h-8 accent-neonCyan"></audio>
-                            <button onclick="document.getElementById('audioContainer').remove()" class="w-full mt-2 text-[10px] py-1 bg-red-500/10 text-red-400 rounded border border-red-500/20 font-mono uppercase font-bold">Hapus Rekaman</button>
-                        `;
-                        area.appendChild(container);
-                    };
+        function redirectToPackageWA() {
+            closeModal('packageModal');
+            const message = encodeURIComponent(`Hello MirrorTalk Team, I would like to purchase the ${currentSelectedPackage} Package.`);
+            window.open(`https://wa.me/6281999321260?text=${message}`, '_blank');
+        }
 
-                    mediaRecorder.start();
-                    btn.textContent = 'REC ACTIVE';
-                    btn.className = 'px-3 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-[11px] font-bold font-mono animate-pulse';
-                    dot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
-                } catch (err) {
-                    alert('Akses mikrofon ditolak atau perangkat tidak mendukung.');
-                    recordOn = false;
-                }
-            } else {
-                if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-                    mediaRecorder.stop();
-                    audioStream.getTracks().forEach(t => t.stop());
-                }
-                btn.textContent = 'MIC OFF';
-                btn.className = 'px-3 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-[11px] font-bold font-mono';
-                dot.className = 'w-2 h-2 rounded-full bg-red-500';
+        // 6. TOPIC-BASED SPEAKING PRACTICE CONTROLLER
+        function selectTopic(title, coreInstruction, guidanceQuestions) {
+            const box = document.getElementById('topicInstructionBox');
+            let questionsHTML = '';
+            guidanceQuestions.forEach(q => {
+                questionsHTML += `<li class="text-gray-700 font-medium">${q}</li>`;
+            });
+
+            box.innerHTML = `
+                <div class="space-y-2">
+                    <span class="text-[10px] bg-doraBlue text-white px-2.5 py-0.5 rounded-md font-mono font-bold uppercase">Active Topic Panel</span>
+                    <h4 class="font-extrabold text-base text-doraDark">${title}</h4>
+                    <p class="text-xs text-gray-600 font-bold italic">"${coreInstruction}"</p>
+                    <div class="border-t border-dashed border-gray-300 pt-2 mt-2">
+                        <span class="text-[10px] uppercase font-mono font-bold text-gray-400 block mb-1">Guiding Questions:</span>
+                        <ul class="list-disc list-inside space-y-1 text-xs pl-1">
+                            ${questionsHTML}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 7. VOICE RECORDING SIMULATOR
+        function triggerRecording(status) {
+            const textEl = document.getElementById('recordingStatusText');
+            if (status === 'recording') {
+                textEl.textContent = 'Status: 🎙️ Recording Audio (Simulated)...';
+                textEl.className = 'text-center font-mono text-[10px] text-red-500 font-bold animate-pulse';
+            } else if (status === 'stopped') {
+                textEl.textContent = 'Status: ⏹️ Recording Stopped. Ready to Playback.';
+                textEl.className = 'text-center font-mono text-[10px] text-gray-700 font-bold';
+            } else if (status === 'playing') {
+                textEl.textContent = 'Status: ▶️ Playing Back Last Record Simulation...';
+                textEl.className = 'text-center font-mono text-[10px] text-doraBlue font-bold';
             }
         }
 
-        // ==================== 2. AKTIF: DYNAMIC CHALLENGES ENGINE ====================
-        const prompts = {
-            1: `"Introduce yourself in English and share what your daily activities look like."`,
-            2: `"Tell us about your favorite hobby and why you enjoy doing it in your spare time."`,
-            3: `"Explain your long-term career goals and how mastering English will help you achieve them."`
-        };
-        
-        document.getElementById('levelSlider').addEventListener('input', (e) => {
-            const val = e.target.value;
-            let label = val == 1 ? "Beginner" : (val == 3 ? "Advanced" : "Medium");
-            document.getElementById('levelVal').textContent = label;
-            document.getElementById('challengePrompt').textContent = prompts[val];
-        });
-
-        // ==================== 3. AKTIF: CONFIDENCE STATS RANDOMIZER ====================
-        function randomizeStats() {
-            const prono = Math.floor(Math.random() * (98 - 70 + 1)) + 70;
-            const fluency = Math.floor(Math.random() * (98 - 70 + 1)) + 70;
-            document.getElementById('pronoScore').textContent = prono + "%";
-            document.getElementById('fluencyScore').textContent = fluency + "%";
-        }
-
-        // ==================== 4. AKTIF: CALCULATIVE REVIEW & RATING ENGINE ====================
-        let currentRating = 0;
-        const allReviewRatings = [5, 4];
-
-        function setRating(rating) {
-            currentRating = rating;
-            document.getElementById('ratingValue').value = rating;
-            document.getElementById('ratingLabel').textContent = `${rating}/5`;
-            document.getElementById('ratingLabel').className = rating > 0 ? "text-xs text-amber-400 font-bold ml-2 font-mono" : "text-xs text-gray-500 font-bold ml-2 font-mono";
+        // ⭐ INTERACTIVE REVIEW & RATING SYSTEM FUNCTIONS
+        function setStarRating(rating) {
+            document.getElementById('revRatingValue').value = rating;
+            document.getElementById('starRatingLabel').textContent = `${rating}/5 Stars`;
             
             const stars = document.querySelectorAll('.star-btn');
             stars.forEach((star, index) => {
-                star.className = index < rating ? "fa-solid fa-star text-amber-400 cursor-pointer star-btn" : "fa-solid fa-star text-gray-700 cursor-pointer star-btn";
+                if (index < rating) {
+                    star.className = 'star-btn text-doraYellow transition-colors';
+                } else {
+                    star.className = 'star-btn text-gray-300 transition-colors';
+                }
             });
         }
 
-        function handleReviewSubmit(e) {
+        function submitUserReview(e) {
             e.preventDefault();
-            const nameInput = document.getElementById('reviewerName'), textInput = document.getElementById('reviewerText');
-            if(currentRating === 0) { alert('Silakan pilih rating bintang terlebih dahulu!'); return; }
-
-            allReviewRatings.push(currentRating);
-            const sum = allReviewRatings.reduce((a, b) => a + b, 0);
-            document.getElementById('avgRatingScore').textContent = (sum / allReviewRatings.length).toFixed(1);
-
-            const card = document.createElement('div');
-            card.className = "bg-darkBg/60 border border-gray-800 p-4 rounded-xl space-y-2";
             
-            let stars = '';
-            for(let i=1; i<=5; i++) stars += i <= currentRating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star text-gray-700"></i>';
+            const name = document.getElementById('revName').value.trim();
+            const status = document.getElementById('revStatus').value.trim();
+            const rating = parseInt(document.getElementById('revRatingValue').value);
+            const message = document.getElementById('revMessage').value.trim();
+            
+            // Generate Text Bintang sesuai jumlah rating
+            let starText = '';
+            for(let i=0; i<5; i++) {
+                starText += i < rating ? '★' : '☆';
+            }
 
+            // Buat Element Kartu Testimonial Baru
+            const grid = document.getElementById('testimonialGrid');
+            const card = document.createElement('div');
+            card.className = "bg-gradient-to-br from-white to-doraLight/20 border-2 border-doraBlue p-4 rounded-xl shadow-md transition-all transform scale-95 opacity-0";
             card.innerHTML = `
-                <div class="flex justify-between items-center gap-2">
-                    <div class="flex items-center gap-2 min-w-0">
-                        <div class="w-7 h-7 shrink-0 bg-neonCyan/20 text-neonCyan rounded-full flex items-center justify-center text-xs font-bold font-mono">${nameInput.value.charAt(0).toUpperCase()}</div>
-                        <span class="text-xs font-bold text-white truncate">${nameInput.value}</span>
-                    </div>
-                    <div class="text-amber-400 text-[11px] font-mono shrink-0">${stars} ${currentRating}/5</div>
-                </div>
-                <p class="text-gray-400 text-xs leading-relaxed italic">"${textInput.value}"</p>
+                <span class="text-xs font-bold text-doraDark block">${name} <span class="text-[10px] bg-doraYellow text-doraDark px-1.5 py-0.2 rounded font-mono ml-1 font-bold">New</span></span>
+                <span class="text-[10px] text-gray-400 font-medium block mb-1">${status}</span>
+                <span class="text-doraYellow text-[10px] font-mono">${starText}</span>
+                <p class="text-gray-600 text-xs italic mt-1">"${message}"</p>
             `;
-            const list = document.getElementById('reviewsList');
-            list.insertBefore(card, list.firstChild);
 
-            nameInput.value = ''; textInput.value = ''; setRating(0);
+            // Tambahkan di baris paling depan (paling atas)
+            grid.insertBefore(card, grid.firstChild);
+
+            // Efek Animasi Muncul Halus
+            setTimeout(() => {
+                card.classList.remove('scale-95', 'opacity-0');
+                card.classList.add('scale-100', 'opacity-100');
+            }, 50);
+
+            // Reset Form Input
+            document.getElementById('revName').value = '';
+            document.getElementById('revStatus').value = '';
+            document.getElementById('revMessage').value = '';
+            setStarRating(5);
+
+            alert('Thank you! Your feedback review has been posted successfully.');
         }
 
-        // ==================== 5. AKTIF: INTELLIGENT AI BOT RESPONDER ====================
+        // AI ASSISTANT BOT RESPONSE ENGINE
         function handleChatSubmit(e) {
             e.preventDefault();
             const input = document.getElementById('aiInput'), container = document.getElementById('chatMessages');
             const txt = input.value.trim(); if(!txt) return;
 
             const uMsg = document.createElement('div');
-            uMsg.className = "bg-gradient-to-r from-neonPurple/20 to-neonCyan/20 p-2.5 rounded-xl max-w-[85%] border border-cyan-500/20 text-white self-end text-left";
+            uMsg.className = "bg-doraBlue text-white p-2 rounded-xl max-w-[85%] self-end text-left";
             uMsg.textContent = txt; container.appendChild(uMsg);
             input.value = ''; container.scrollTop = container.scrollHeight;
 
-            let res = "Maaf, saya tidak mengerti konteks tersebut. Saya diprogram menjawab seputar layanan MirrorTalk.id.";
-            const q = txt.toLowerCase();
-            if(q.includes('topik') || q.includes('fitur')) res = "MirrorTalk menyediakan 3 fitur utama di dashboard: \n1. Evaluasi suara mandiri\n2. Tantangan level berbicara (Beginner-Advanced)\n3. Statistik akurasi pronunciation.";
-            else if(q.includes('cermin') || q.includes('metode')) res = "Metode Mirror-Learning melatih ekspresi wajah dan pergerakan bibir di depan layar secara privat untuk menekan rasa gugup.";
-            else if(q.includes('harga') || q.includes('modal')) res = "Modal awal pengembangan sangat ekonomis (Rp175.000) dialokasikan penuh untuk internet dan operasional tim.";
+            let res = "I am a prototype assistant for MirrorTalk.id. Please register via Get Started to enjoy complete structural independent training guidance courses!";
+            if (txt.toLowerCase().includes('hello') || txt.toLowerCase().includes('hi')) {
+                res = "Hello Learner! Complete your assignment registration to jump into independent speech evaluation dashboard workspaces.";
+            }
 
             setTimeout(() => {
                 const aiMsg = document.createElement('div');
-                aiMsg.className = "bg-gray-800/50 p-2.5 rounded-xl max-w-[85%] border border-gray-800 text-gray-300 self-start whitespace-pre-line text-left";
+                aiMsg.className = "bg-gray-100 p-2 rounded-xl max-w-[85%] text-gray-700 self-start text-left";
                 aiMsg.textContent = res; container.appendChild(aiMsg);
                 container.scrollTop = container.scrollHeight;
-            }, 600);
+            }, 400);
         }
     </script>
 </body>
