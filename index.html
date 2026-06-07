@@ -89,7 +89,7 @@
                 <button onclick="openModal('registerModal')" class="w-full sm:w-auto bg-doraBlue hover:bg-sky-600 text-white font-bold px-6 sm:px-8 py-3.5 rounded-2xl text-center shadow-lg border-2 border-doraDark text-sm sm:text-base">
                     [Get Started]
                 </button>
-                <a href="https://chat.whatsapp.com/Lrd6KETO2u31asYWkROM4F?s=cl&p=a&mlu=1&amv=1" target="_blank" rel="noopener">
+                <a href="https://wa.me/invite/Lrd6KETO2u31asYWkROM4F" target="_blank" rel="noopener" class="w-full sm:w-auto bg-white hover:bg-gray-50 border-2 border-doraDark text-doraDark font-bold px-6 sm:px-8 py-3.5 rounded-2xl text-center shadow-md transition-all text-sm sm:text-base">
                     [Free Trial]
                 </a>
             </div>
@@ -591,7 +591,7 @@
     </div>
 
     <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
-        <a href="whatsapp://chat?Lrd6KETO2u31asYWkROM4F?s=cl&p=a&mlu=1&amv=1" target="_blank" rel="noopener" class="flex items-center justify-center w-12 h-12 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-lg transform hover:scale-110 transition-all">
+        <a href="whatsapp://chat?code=Lrd6KETO2u31asYWkROM4F" class="flex items-center justify-center w-12 h-12 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-lg transform hover:scale-110 transition-all">
             <i class="fa-brands fa-whatsapp text-2xl"></i>
         </a>
         <button onclick="toggleAIChat()" class="flex items-center justify-center w-12 h-12 bg-doraYellow border-2 border-doraDark text-doraDark rounded-full shadow-lg transform hover:scale-110 transition-all">
@@ -663,12 +663,12 @@
             openModal('packageModal');
         }
 
-        // DIUBAH: Pembelian paket kini juga langsung mengarah ke link grup WhatsApp
+        // UPDATE: Pembelian paket dialihkan langsung menggunakan protokol deep-link whatsapp
         function redirectToPackageWA() {
-                 closeModal('packageModal');
-    // Buka tanpa menyembunyikan referrer
-                 window.open('whatsapp://chat?Lrd6KETO2u31asYWkROM4F?s=cl&p=a&mlu=1&amv=1', '_blank', 'noopener');
-}
+            closeModal('packageModal');
+            window.open('whatsapp://chat?code=Lrd6KETO2u31asYWkROM4F', '_self');
+        }
+
         // TOPIC-BASED SPEAKING PRACTICE CONTROLLER
         function selectTopic(title, coreInstruction, guidanceQuestions) {
             const box = document.getElementById('topicInstructionBox');
