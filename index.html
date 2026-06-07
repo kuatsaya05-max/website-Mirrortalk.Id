@@ -89,7 +89,7 @@
                 <button onclick="openModal('registerModal')" class="w-full sm:w-auto bg-doraBlue hover:bg-sky-600 text-white font-bold px-6 sm:px-8 py-3.5 rounded-2xl text-center shadow-lg border-2 border-doraDark text-sm sm:text-base">
                     [Get Started]
                 </button>
-                <a href="https://wa.me/6281999321260?text=Hello%20MirrorTalk%20Team%2C%20I%20would%20like%20to%20join%20the%20Free%20Trial%20Program." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-white hover:bg-gray-50 border-2 border-doraDark text-doraDark font-bold px-6 sm:px-8 py-3.5 rounded-2xl text-center shadow-md transition-all text-sm sm:text-base">
+                <a href="https://chat.whatsapp.com/InviteCodeGrupAnda" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-white hover:bg-gray-50 border-2 border-doraDark text-doraDark font-bold px-6 sm:px-8 py-3.5 rounded-2xl text-center shadow-md transition-all text-sm sm:text-base">
                     [Free Trial]
                 </a>
             </div>
@@ -265,7 +265,6 @@
                     <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Limited speaking opportunities</li>
                     <li class="flex gap-2.5"><i class="fa-solid fa-circle-xmark text-red-500 mt-1 shrink-0"></i> Uncomfortable learning environments</li>
                 </ul>
-                <p class="text-gray-500 text-xs sm:text-sm mt-4 italic">As a result, many learners find it difficult to communicate effectively despite having basic English knowledge.</p>
             </div>
             
             <div class="bg-white border-4 border-emerald-400 p-5 sm:p-8 rounded-3xl shadow-sm">
@@ -592,7 +591,7 @@
     </div>
 
     <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
-        <a href="https://wa.me/6281999321260?text=Hello%20MirrorTalk%20Team%2C%20I%20would%20like%20to%20join%20the%20Free%20Trial%20Program." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-lg transform hover:scale-110 transition-all">
+        <a href="https://chat.whatsapp.com/Lrd6KETO2u31asYWkROM4F?s=cl&p=a&mlu=1&amv=1" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-lg transform hover:scale-110 transition-all">
             <i class="fa-brands fa-whatsapp text-2xl"></i>
         </a>
         <button onclick="toggleAIChat()" class="flex items-center justify-center w-12 h-12 bg-doraYellow border-2 border-doraDark text-doraDark rounded-full shadow-lg transform hover:scale-110 transition-all">
@@ -633,7 +632,7 @@
             document.getElementById('aiChatWindow').classList.toggle('hidden');
         }
 
-        // 1. GET STARTED ACTION FLOW TO DASHBOARD
+        // GET STARTED ACTION FLOW TO DASHBOARD
         function handleRegisterSubmit(e) {
             e.preventDefault();
             closeModal('registerModal');
@@ -647,7 +646,7 @@
             document.getElementById('home').classList.remove('hidden');
         }
 
-        // 3,4,5. PACKAGE MANAGEMENT TRANSITIONS
+        // PACKAGE MANAGEMENT TRANSITIONS
         function openPackageModal(name, price, features) {
             currentSelectedPackage = name;
             document.getElementById('pckTitle').textContent = `${name} Package Details`;
@@ -664,13 +663,13 @@
             openModal('packageModal');
         }
 
+        // DIUBAH: Pembelian paket kini juga langsung mengarah ke link grup WhatsApp
         function redirectToPackageWA() {
             closeModal('packageModal');
-            const message = encodeURIComponent(`Hello MirrorTalk Team, I would like to purchase the ${currentSelectedPackage} Package.`);
-            window.open(`https://wa.me/6281999321260?text=${message}`, '_blank');
+            window.open('https://chat.whatsapp.com/Lrd6KETO2u31asYWkROM4F?s=cl&p=a&mlu=1&amv=1', '_blank');
         }
 
-        // 6. TOPIC-BASED SPEAKING PRACTICE CONTROLLER
+        // TOPIC-BASED SPEAKING PRACTICE CONTROLLER
         function selectTopic(title, coreInstruction, guidanceQuestions) {
             const box = document.getElementById('topicInstructionBox');
             let questionsHTML = '';
@@ -693,7 +692,7 @@
             `;
         }
 
-        // 7. VOICE RECORDING SIMULATOR
+        // VOICE RECORDING SIMULATOR
         function triggerRecording(status) {
             const textEl = document.getElementById('recordingStatusText');
             if (status === 'recording') {
@@ -708,7 +707,7 @@
             }
         }
 
-        // ⭐ INTERACTIVE REVIEW & RATING SYSTEM FUNCTIONS
+        // INTERACTIVE REVIEW & RATING SYSTEM FUNCTIONS
         function setStarRating(rating) {
             document.getElementById('revRatingValue').value = rating;
             document.getElementById('starRatingLabel').textContent = `${rating}/5 Stars`;
@@ -731,13 +730,11 @@
             const rating = parseInt(document.getElementById('revRatingValue').value);
             const message = document.getElementById('revMessage').value.trim();
             
-            // Generate Text Bintang sesuai jumlah rating
             let starText = '';
             for(let i=0; i<5; i++) {
                 starText += i < rating ? '★' : '☆';
             }
 
-            // Buat Element Kartu Testimonial Baru
             const grid = document.getElementById('testimonialGrid');
             const card = document.createElement('div');
             card.className = "bg-gradient-to-br from-white to-doraLight/20 border-2 border-doraBlue p-4 rounded-xl shadow-md transition-all transform scale-95 opacity-0";
@@ -748,16 +745,13 @@
                 <p class="text-gray-600 text-xs italic mt-1">"${message}"</p>
             `;
 
-            // Tambahkan di baris paling depan (paling atas)
             grid.insertBefore(card, grid.firstChild);
 
-            // Efek Animasi Muncul Halus
             setTimeout(() => {
                 card.classList.remove('scale-95', 'opacity-0');
                 card.classList.add('scale-100', 'opacity-100');
             }, 50);
 
-            // Reset Form Input
             document.getElementById('revName').value = '';
             document.getElementById('revStatus').value = '';
             document.getElementById('revMessage').value = '';
