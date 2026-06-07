@@ -665,10 +665,10 @@
 
         // DIUBAH: Pembelian paket kini juga langsung mengarah ke link grup WhatsApp
         function redirectToPackageWA() {
-            closeModal('packageModal');
-            window.open('https://chat.whatsapp.com/Lrd6KETO2u31asYWkROM4F?s=cl&p=a&mlu=1&amv=1', '_blank');
-        }
-
+                 closeModal('packageModal');
+    // Buka tanpa menyembunyikan referrer
+                 window.open('https://chat.whatsapp.com/Lrd6KETO2u31asYWkROM4F?s=cl&p=a&mlu=1&amv=1', '_blank', 'noopener');
+}
         // TOPIC-BASED SPEAKING PRACTICE CONTROLLER
         function selectTopic(title, coreInstruction, guidanceQuestions) {
             const box = document.getElementById('topicInstructionBox');
